@@ -19,35 +19,81 @@ func NewDBSchemaManager (dbName string) *DBSchemaManager  {
     return &DBSchemaManager{db}
 }
 
-// func (manager *DBSchemaManager) CreateAppTables()  {
-//
-//     _, err := manager.db.Exec("CREATE TABLE Client (Id integer primary key,
-//         Name text)");
-//
-//     log.Println(err);
-//
-//     _, err := manager.db.Exec("CREATE TABLE Vehicle (Id integer primary key,
-//         ClientId integer,
-//         PlateNumber text,
-//         ChassisNumber text,
-//         Brand text,
-//         Model text
-//         Year integer)");
-//
-//     log.Println(err);
-//
-//     _, err := manager.db.Exec("CREATE TABLE Appointment (Id integer primary key,
-//         ClientId int64
-//         VehicleId int64)");
-//
-//     log.Println(err);
-//
-//     _, err := manager.db.Exec("CREATE TABLE Reparation (Id integer primary key,
-//         VehicleId int64
-//         Description string)");
-//
-//     log.Println(err);
-// }
+func (manager *DBSchemaManager) CreateAppTables()  {
+
+    _, err := manager.db.Exec(`CREATE TABLE Client (
+        Id integer primary key,
+        Name text
+    )`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`CREATE TABLE Vehicle (
+        Id integer primary key,
+        ClientId integer,
+        PlateNumber text,
+        ChassisNumber text,
+        Brand text,
+        Model text,
+        Year integer
+    )`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`CREATE TABLE Appointment (
+        Id integer primary key,
+        ClientId int64,
+        VehicleId int64,
+        Date integer
+    )`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`CREATE TABLE Reparation (
+        Id integer primary key,
+        VehicleId int64,
+        Description string
+    )`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+}
+
+func (manager *DBSchemaManager) DropAppTables()  {
+
+    _, err := manager.db.Exec(`DROP TABLE IF EXISTS Client`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`DROP TABLE IF EXISTS Vehicle`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`DROP TABLE IF EXISTS Appointment`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`DROP TABLE IF EXISTS Reparation`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+}
 
 func (manager *DBSchemaManager) CreateTestTables()  {
 
