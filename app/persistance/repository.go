@@ -69,6 +69,8 @@ func (r *Repository) Save (object interface{}) (int64, error) {
 
     insert = insert + ")"
 
+    log.Println("About to exec the following sql:\n" + insert)
+
     var stmt, err = r.db.Prepare(insert)
 
     var res sql.Result

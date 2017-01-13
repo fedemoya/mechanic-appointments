@@ -5,13 +5,18 @@ import(
     "time"
     "net/http"
     "github.com/gorilla/mux"
+    "mechanics-backend/app/persistance"
     "mechanics-backend/app/handlers"
 )
 
 func main() {
 
+    init_db()
+
     r := mux.NewRouter()
-    r.Handle("/client", &handlers.ClientHandler{})
+
+    r.HandleFunc("/client", handlers.NewClient).Methods("POST")
+    r.HandleFunc("/client/{id:[0-9]+}", handlers.ClientDetail).Methods("GET")
 
     log.Println("Listening...")
 
@@ -27,5 +32,7 @@ func main() {
 }
 
 func init_db()  {
-    
+    manager := persistance.NewDBSchemaManager("mechanics.db")
+    manager.DropAppTables()
+    manager.CreateAppTables()
 }
