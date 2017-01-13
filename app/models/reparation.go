@@ -1,9 +1,8 @@
 package models
 
-// import (
-//     "mechanics-backend/app/persistance"
-//     "mechanics-backend/app/models"
-// )
+import (
+    "mechanics-backend/app/persistance"
+)
 
 type Reparation struct {
     Id int64
@@ -11,8 +10,8 @@ type Reparation struct {
     Description string
 }
 
-// func (r *Reparation) Vehicle (repo *persistance.Repository) *models.Vehicle  {
-//     vehicle := &Vehicle{}
-//     repo.Retrieve(vehicle, r.VehicleId)
-//     return vehicle
-// }
+func (r *Reparation) Vehicle (repo *persistance.Repository) *Vehicle  {
+    vehicle := &Vehicle{}
+    repo.Retrieve(vehicle, r.VehicleId)
+    return vehicle
+}

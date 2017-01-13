@@ -116,6 +116,53 @@ func TestSaveRetrieveVehicle(t *testing.T) {
     }
 }
 
+func TestVehicleRelations(t *testing.T)  {
+
+    var client *models.Client = &models.Client{Name: "Federico"}
+    repository := persistance.NewRepository("mechanics_test.db")
+    id, err := repository.Save(client)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+    if (id == 0) {
+        t.Error("Problem occur saving Client object")
+    }
+
+    var vehicle *models.Vehicle = &models.Vehicle{
+        ClientId: id,
+        PlateNumber: "IYN751",
+        ChassisNumber: "D8DUD8DYDGNVH764",
+        Brand: "Citroen",
+        Model: "C4",
+        Year: 2010,
+    }
+
+    id, err = repository.Save(vehicle)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+    if (id == 0) {
+        t.Error("Problem occur saving Vehicle object")
+    }
+
+    vehicleAgain := &models.Vehicle{}
+    err = repository.Retrieve(vehicleAgain, id)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+    clientAgain := vehicleAgain.Client(repository)
+
+    if clientAgain.Name != "Federico" {
+        t.Error("Problem with Vehicle -> Client relation")
+    }
+}
+
 func TestMain(m *testing.M) {
     manager := persistance.NewDBSchemaManager("mechanics_test.db")
     manager.DropAppTables()
