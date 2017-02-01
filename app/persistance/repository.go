@@ -100,3 +100,16 @@ func (r *Repository) Retrieve (emptyObject interface{}, id int64) error {
 
     return err
 }
+
+func (r *Repository) Search(emptyObject interface{}, objectsSlice interface{}) error {
+
+    t := reflect.TypeOf(emptyObject).Elem()
+
+    objectName := t.Name()
+
+    selectStr := "SELECT * FROM " + objectName
+
+    err := r.db.Select(objectsSlice, selectStr)
+
+    return err
+}

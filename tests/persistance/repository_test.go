@@ -58,6 +58,32 @@ func TestRetrieve(t *testing.T)  {
     }
 }
 
+func TestSearch(t *testing.T)  {
+    repository := persistance.NewRepository("mechanics_test.db")
+    var birthDate time.Time = time.Date(1986, time.May, 24, 7, 0, 0, 0, time.UTC)
+    p := &Person{FirstName: "Federico", LastName: "Moya", Email: "federicoamoya@gmail.com", BirthDate: birthDate.Unix()}
+    id, err := repository.Save(p)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+    if (id == 0) {
+        t.Error("Problem occur saving Person object")
+    }
+
+    persons := []Person{}
+    err = repository.Search(&Person{}, &persons)
+
+    if err != nil {
+        t.Error(err)
+    }
+
+    if persons[0].FirstName != "Federico" {
+        t.Error("Problem occur retrieving Person object")
+    }
+}
+
 func TestMain(m *testing.M) {
     manager := persistance.NewDBSchemaManager("mechanics_test.db")
     manager.DropTestTables()

@@ -59,3 +59,22 @@ func ClientDetail(w http.ResponseWriter, r *http.Request) {
 
   w.Write(clientJson)
 }
+
+func ClientList(w http.ResponseWriter, r *http.Request) {
+
+    repository := persistance.NewRepository("mechanics.db")
+
+    clients := []models.Client{}
+    err := repository.Search(&models.Client{}, &clients)
+
+    if err != nil {
+        log.Println(err)
+    }
+
+    clientsJson, err := json.Marshal(clients)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    w.Write(clientsJson)
+}

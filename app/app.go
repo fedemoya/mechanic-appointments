@@ -17,6 +17,7 @@ func main() {
 
     r.HandleFunc("/client", handlers.NewClient).Methods("POST")
     r.HandleFunc("/client/{id:[0-9]+}", handlers.ClientDetail).Methods("GET")
+    r.HandleFunc("/clients", handlers.ClientList).Methods("GET")
 
     log.Println("Listening...")
 
