@@ -19,6 +19,14 @@ func main() {
     r.HandleFunc("/client/{id:[0-9]+}", handlers.ClientDetail).Methods("GET")
     r.HandleFunc("/clients", handlers.ClientList).Methods("GET")
 
+    r.HandleFunc("/appointment", handlers.NewAppointment).Methods("POST")
+    r.HandleFunc("/appointment/{id:[0-9]+}", handlers.AppointmentDetail).Methods("GET")
+    // r.HandleFunc("/clients", handlers.ClientList).Methods("GET")
+
+    r.HandleFunc("/vehicle", handlers.NewVehicle).Methods("POST")
+    // r.HandleFunc("/client/{id:[0-9]+}", handlers.ClientDetail).Methods("GET")
+    // r.HandleFunc("/clients", handlers.ClientList).Methods("GET")
+
     log.Println("Listening...")
 
     srv := &http.Server{
