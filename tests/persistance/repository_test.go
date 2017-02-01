@@ -29,7 +29,7 @@ func TestSave(t *testing.T) {
     if (id == 0) {
         t.Error("Problem occur saving Person object")
     }
-    
+
 }
 
 func TestRetrieve(t *testing.T)  {
@@ -43,11 +43,15 @@ func TestRetrieve(t *testing.T)  {
     }
 
     if (id == 0) {
-        t.Error("Problem occur retrieving Person object")
+        t.Error("Problem occur saving Person object")
     }
 
     var pAgain *Person = &Person{}
-    repository.Retrieve(pAgain, id)
+    err = repository.Retrieve(pAgain, id)
+
+    if err != nil {
+        t.Error(err)
+    }
 
     if pAgain.FirstName != "Federico" {
         t.Error("Problem occur retrieving Person object")
