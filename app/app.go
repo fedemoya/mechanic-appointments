@@ -15,13 +15,15 @@ func main() {
 
     r := mux.NewRouter()
 
+    r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("html"))))
+
     r.HandleFunc("/client", handlers.NewClient).Methods("POST")
     r.HandleFunc("/client/{id:[0-9]+}", handlers.ClientDetail).Methods("GET")
     r.HandleFunc("/clients", handlers.ClientList).Methods("GET")
 
     r.HandleFunc("/appointment", handlers.NewAppointment).Methods("POST")
     r.HandleFunc("/appointment/{id:[0-9]+}", handlers.AppointmentDetail).Methods("GET")
-    // r.HandleFunc("/clients", handlers.ClientList).Methods("GET")
+    r.HandleFunc("/appointments", handlers.AppointmentList).Methods("GET")
 
     r.HandleFunc("/vehicle", handlers.NewVehicle).Methods("POST")
     // r.HandleFunc("/client/{id:[0-9]+}", handlers.ClientDetail).Methods("GET")
