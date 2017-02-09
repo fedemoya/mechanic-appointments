@@ -1,0 +1,595 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"exp",
+				"expRight"
+			],
+			[
+				"lef",
+				"leftExpression"
+			],
+			[
+				"cau",
+				"causalEqs"
+			],
+			[
+				"eq",
+				"equationsAfter"
+			],
+			[
+				"spl",
+				"spiltted_original_name"
+			],
+			[
+				"tst_da",
+				"tst_data_filename"
+			],
+			[
+				"or",
+				"original_filename"
+			],
+			[
+				"ss",
+				"sst_count"
+			],
+			[
+				"sim",
+				"simple_strategy_avgs"
+			],
+			[
+				"fo",
+				"for\tLoop"
+			],
+			[
+				"for",
+				"fore\tLoop"
+			],
+			[
+				"ch",
+				"char_filename"
+			],
+			[
+				"cl",
+				"clone_filename"
+			],
+			[
+				"tmp_f",
+				"tmp_filename"
+			],
+			[
+				"tm",
+				"tmp_fh"
+			],
+			[
+				"FILE",
+				"filename"
+			],
+			[
+				"graph",
+				"graph_size"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"_",
+				"_causalEqsBegining"
+			],
+			[
+				"unk",
+				"unknownDegree1Verts"
+			],
+			[
+				"collec",
+				"collectDegree1Verts"
+			],
+			[
+				"Cau",
+				"CausalizationStrategy"
+			],
+			[
+				"si",
+				"size"
+			],
+			[
+				"_cau",
+				"_causalEqsEndIndex"
+			],
+			[
+				"_ca",
+				"_causalEqsEnd"
+			],
+			[
+				"beg",
+				"begin"
+			],
+			[
+				"ma",
+				"makeCausalMiddle"
+			],
+			[
+				"de",
+				"debug"
+			],
+			[
+				"be",
+				"begin"
+			],
+			[
+				"_C",
+				"_causalEqsBegining"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "package",
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/alberto/Code/mechanics-backend"
+	],
+	"file_history":
+	[
+		"/Users/alberto/Library/Application Support/Sublime Text 3/Packages/GoSublime/USAGE.md",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tex/implementacion_causalizacion.tex",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tex/causalizacion.tex",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tex/modelos_matematicos.tex",
+		"/Users/alberto/Tesina/informe_tesina/Tesina.tex",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tesina.tex",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tex/intro.tex",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tex/vision_general_compilador.tex",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tex/modelica.tex",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tex/vision_gemeral_compilador.tex",
+		"/Users/alberto/Tesina/informe_tesina/diapos/tex/vision_gemeral_compilador.pdf",
+		"/Users/alberto/Tesina/diapos/tesina.tex",
+		"/Users/alberto/Tesina/diapos/diapos.sublime-project",
+		"/Users/alberto/DevEnv/go/.dockerignore",
+		"/Users/alberto/DevEnv/go/learning/learning.sublime-project",
+		"/Users/alberto/DevEnv/go/learning-go/src/github.com/user/hello/hello.go",
+		"/Users/alberto/DevEnv/go/Dockerfile",
+		"/Users/alberto/Library/Application Support/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/plotscript.gnuplot",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/plotscript_loop.gnuplot",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/foo.tex",
+		"/Users/alberto/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/alberto/Tesina/informe_tesina/bibliography.bib",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/OneDHeatTransferTI_FD_tarjan.data",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/OneDHeatTransferTI_FD_full.data",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/OneDHeatTransferTI_FD_simple.data",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/OneDHeatTransferTI_FD_loop_full.data",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/OneDHeatTransferTI_FD_loop_tarjan.data",
+		"/Users/alberto/Tesina/caso_estudio_performance/4thTry/OneDHeatTransferTI_FD_loop_simple.data",
+		"/Users/alberto/Tesina/modelicacc-git/causalize/causalization_strategy.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD.mo",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_loop_mix2.mo",
+		"/Users/alberto/Tesina/modelicacc-git/causalize/apply_tarjan.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_loop.mo",
+		"/Users/alberto/Tesina/New OneDHeatTransfer/OneDHeatTransferTI_FD_loop.mo",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_mix.mo",
+		"/Users/alberto/Tesina/modelicacc-git/ast/expression.h",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/causalization_strategy_test.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/for_unrolling/process_for_equations_test.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/ast/expression.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/for_unrolling/for_example_1.mo",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/for_unrolling/for_example_2.mo",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/for_unrolling/for_example_3.mo",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/for_unrolling/for_example_4.mo",
+		"/Users/alberto/Tesina/modelicacc-git/causalize/for_unrolling/process_for_equations.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/util/ast_visitors/part_evalexp.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/util/ast_visitors/contains.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/util/ast_visitors/contains.h",
+		"/Users/alberto/Tesina/BouncingBall/ExampleParaInforme.mo",
+		"/Users/alberto/Tesina/BouncingBall/Example.mo",
+		"/Users/alberto/Tesina/BouncingBall/ExampleParaInforme_2.mo",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/performance_test.cpp",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/HQ/OneDHeatTransferTI_FD_tarjan.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/HQ/OneDHeatTransferTI_FD_full.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/plotscript.gnuplot",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/HQ/OneDHeatTransferTI_FD_simple.data",
+		"/Users/alberto/Tesina/modelicacc-git/Makefile.in",
+		"/Users/alberto/Tesina/modelicacc-git/Makefile",
+		"/Users/alberto/Tesina/modelicacc-git/util/solve/solve.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/causalize/causalization_strategy.h",
+		"/Users/alberto/Tesina/modelicacc-git/causalize/Makefile.include",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_tarjan.data",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_simple.data",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_loop_tarjan.data",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_loop_simple.data",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_loop_full.data",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_full.data",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/run_performance_test.pl",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/performance_test",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_100.mo",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/rlc_loop.mo",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/generate_OneDHeatTransferTI_FD.mo.pl",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/OneDHeatTransferTI_FD_loop_100.mo",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTransfer_tarjan.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTransfer_simple.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTransfer_full.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTrasfer_simple.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTrasfer_tarjan.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTrasfer_full.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTransfer_simple_loop.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTransfer_tarjan_loop.data",
+		"/Users/alberto/Tesina/informe_tesina/caso_estudio_performance/OneDHeatTransfer_full_loop.data",
+		"/Users/alberto/DevEnv/Vagrantfile",
+		"/Users/alberto/Tesina/modelicacc-git/mmo/mmo_class.h",
+		"/Users/alberto/Tesina/OneDHeatTransferTI_FD.mo",
+		"/Users/alberto/Tesina/OneDHeatTransferTI_FD_loop.mo",
+		"/Users/alberto/Tesina/modelicacc-git/util/debug.cpp",
+		"/Users/alberto/Tesina/modelicacc-git/test/causalize/causalization_strategy_test"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"center",
+			"simple",
+			"ej_trans",
+			"ej_alg_simple",
+			"circuito rlc",
+			"singularidad",
+			"OneDHeatTransfer",
+			"loop",
+			"test unitario",
+			"Expansi",
+			"alltt",
+			"6",
+			"Algoritmo de Tar",
+			"compilación y ejecución",
+			"vision general del ",
+			"variables y constantes",
+			"categorías de variables",
+			"categorias de variables",
+			"GKJJK",
+			"OneDHeatTransferTI_FD_simple",
+			"OneDHeatTransferTI_FD_tarjan",
+			"OneDHeatTransferTI_FD_loop_tarjan",
+			"OneDHeatTransferTI_FD_loop_full",
+			"OneDHeatTransferTI_FD_loop_simple",
+			"-S run",
+			"run_",
+			"OneDHeatTransferTI_FD_loop",
+			"1600",
+			"run_1600_2000",
+			"1600",
+			"1600_",
+			"1600_2000",
+			"T",
+			"apply_tar",
+			"N",
+			"REal",
+			"));\n",
+			"Indexes",
+			"Ref",
+			"PartEvalExp",
+			"Reference",
+			"contains",
+			";\n",
+			"ball1_flange1_v",
+			"flange1_v",
+			"libmodelica.a",
+			"spiltted_original_name",
+			"original_filename",
+			"OneDHeatTransfer_",
+			"OneDHeatTransfer_simple",
+			"OneDHeatTransfer_tarjar",
+			"tst_data_fh",
+			"OneDHeatTransfer_simple",
+			"sst_data_fh",
+			"$n",
+			"\";\n",
+			"sst",
+			"simple_strategy_avgs",
+			"sst_count",
+			"sst_sum",
+			"simple_strategy_avgs",
+			"sst_count",
+			"sst_sum",
+			"$i",
+			"$tmp_fh",
+			"$fh",
+			"tmp_filename",
+			"$filename",
+			"debug",
+			"$fh",
+			".data",
+			"cStrategy2",
+			"mmo2",
+			"ast_c2",
+			"sd2",
+			"causalEqsBeg",
+			"_mmo_class.equations_ref().equations_ref() = _causalEqsBegining",
+			"makeCausalBegining",
+			"expression",
+			"unknownAdjEq",
+			"eqAdjUnknown",
+			"eqAdjEdge",
+			"eq",
+			"ast_c",
+			"sd",
+			"_causalEqsEndIndex",
+			"unknown",
+			"causalEqsEndIndex",
+			"causalize_simple",
+			"no_opt",
+			"std",
+			"void rlc_test() {\n\n  bool r;\n\n  StoredDef sd = parseFile(\"rlc.mo\",r);\n\n  if (!r)\n    ERROR(\"Can't parse file\\n\");\n\n  Class ast_c = boost::get<Class>(sd.classes().front());\n  MMO_Class mmo(ast_c);\n\n  UnknownsCollector collector(mmo);\n  ExpList unknowns = collector.collectUnknowns();\n\n  CausalizationStrategy cStrategy(mmo);\n  cStrategy.causalize(\"Anything\");\n\n  std::cout << mmo << std::endl;\n\n  check_causality(mmo, unknowns);\n\n}",
+			"_causalEqsMiddle",
+			"no_opt",
+			"rlc_loop",
+			"rlc_loop_no_opt_test",
+			"no_opt",
+			"_causalEqsEnd"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GoSublime-output":
+	{
+		"height": 112.0
+	},
+	"output.MarGo-output":
+	{
+		"height": 112.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "mechanics-backend.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"causali",
+				"causalize/causalization_strategy.cpp"
+			],
+			[
+				"appl",
+				"causalize/apply_tarjan.cpp"
+			],
+			[
+				"causa",
+				"causalize/causalization_strategy.cpp"
+			],
+			[
+				"expres",
+				"ast/expression.h"
+			],
+			[
+				"expresi",
+				"ast/expression.cpp"
+			],
+			[
+				"causalizatio",
+				"causalize/causalization_strategy.cpp"
+			],
+			[
+				"causalizationtest",
+				"test/causalize/causalization_strategy_test.cpp"
+			],
+			[
+				"proce",
+				"causalize/for_unrolling/process_for_equations.cpp"
+			],
+			[
+				"expre",
+				"ast/expression.h"
+			],
+			[
+				"ex",
+				"ast/expression.cpp"
+			],
+			[
+				"contains",
+				"util/ast_visitors/contains.h"
+			],
+			[
+				"utilast_visitorscon",
+				"util/ast_visitors/contains.cpp"
+			],
+			[
+				"per",
+				"test/causalize/performance_test.cpp"
+			],
+			[
+				"solve",
+				"util/solve/solve.cpp"
+			],
+			[
+				"make",
+				"Makefile"
+			],
+			[
+				"run",
+				"test/causalize/run_performance_test.pl"
+			],
+			[
+				"causalization",
+				"causalize/causalization_strategy.cpp"
+			],
+			[
+				"strate",
+				"causalize/causalization_strategy.cpp"
+			],
+			[
+				"mmo.",
+				"mmo/mmo_class.h"
+			],
+			[
+				"perfo",
+				"test/causalize/performance_test.cpp"
+			],
+			[
+				"one",
+				"test/causalize/OneDHeatTransferTI_FD_loop.mo"
+			],
+			[
+				"on",
+				"test/causalize/OneDHeatTransferTI_FD.mo"
+			],
+			[
+				"",
+				"causalize/causalization_strategy.cpp"
+			],
+			[
+				"debug",
+				"util/debug.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Tesina/sublime-workspace/modelica.sublime-project"
+			],
+			[
+				"caus",
+				"~/Tesina/sublime-workspace/modelica.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 181.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

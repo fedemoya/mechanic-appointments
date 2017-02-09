@@ -5,37 +5,115 @@
 <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src=js/all.js></script>
 </head>
 <body>
 
-<div data-role="page" id="pageone">
+<div data-role="page" id="menu">
+  
   <div data-role="header">
-    <h1>Welcome To My Homepage</h1>
+    <h1>Menu</h1>
+  </div>
+
+  <div data-role="navbar">
+      <a href="#new_client">Clientes</a>
+      <a href="#new_vehicle">Vehiculos</a>
+      <a href="#appointments">Turnos</a>
+  </div><!-- /navbar -->
+
+</div>
+
+<div data-role="page" id="new_client">
+  
+  <div data-role="header">
+    <h1>Nuevo Cliente</h1>
   </div>
 
   <div data-role="main" class="ui-content">
-    <p>Welcome! If you click on the link below, it will take you to Page Two.</p>
-    <a href="#pagetwo">Go to Page Two</a>
+
+    <form action="javascript:submitClientForm()" id="new_client_form">
+      Nombre<br>
+      <input type="text" name="Name"><br>
+      <input class="submit" type="submit" value="Enviar">
+    </form>
+
+    <div id="new_client_confirm" align="center" style="display:none;background-color:grey;">
+      <p><strong>Nuevo cliente creado</strong></p>
+    </div>
+
+    <!-- <div class="ui-input-btn ui-btn ui-corner-all ui-shadow">
+        <a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left">Add Me On Facebook</a>
+    </div> -->
+
+    <div data-role="footer" align="center">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+    </div>
+
   </div>
 
-  <div data-role="footer">
-    <h1>Footer Text</h1>
+</div>
+
+
+<div data-role="page" id="new_vehicle">
+
+  <div data-role="header">
+      <h1>Nuevo Vehiculo</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+      <form action="javascript:submitVehicleForm()" id="new_vehicle_form">
+          N&uacutemero de Patente<br>
+          <input type="text" name="PlateNumber"><br>
+          N&uacutemero de Chasis<br>
+          <input type="text" name="ChassisNumber"><br>
+          Marca<br>
+          <input type="text" name="Brand"><br>
+          Modelo<br>
+          <input type="text" name="Model"><br>
+          A&ntildeo
+          <input type="text" name="Year"><br>
+          <input class="submit" type="submit" value="Enviar">
+      </form>
+
+      <div id="new_client_confirm" align="center" style="display:none;background-color:grey;">
+          <p><strong>Nuevo vehiculo creado</strong></p>
+      </div>
+  
+    <div data-role="footer" align="center">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+    </div>
+
   </div>
 </div>
 
-<div data-role="page" id="pagetwo">
+
+<div data-role="page" id="appointments">
+
   <div data-role="header">
-    <h1>Welcome To My Homepage</h1>
+      <h1>Turnos</h1>
   </div>
 
   <div data-role="main" class="ui-content">
-    <p>This is Page Two. If you click on the link below, it will take you to Page One.</p>
-    <a href="#pageone">Go to Page One</a>
+
+      <input type="text" data-role="date">
+
+      <table data-role="table" data-mode="columntoggle" class="ui-responsive" id="appointments-table">
+      <thead>
+          <tr>
+              <th>Cliente</th>
+              <th>Vehiculo</th>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      </table>
+
   </div>
 
-  <div data-role="footer">
-    <h1>Footer Text</h1>
+  <div data-role="footer" align="center">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
   </div>
+
 </div>
 
 </body>

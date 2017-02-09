@@ -25,17 +25,23 @@ func NewAppointment(w http.ResponseWriter, r *http.Request) {
 
   parsedClientId, err := strconv.ParseInt(clientId, 10, 64)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   parsedVehicleId, err := strconv.ParseInt(vehicleId, 10, 64)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   parsedDate, err := strconv.ParseInt(date, 10, 64)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   appointment := &models.Appointment{ClientId: parsedClientId, VehicleId: parsedVehicleId, Date: parsedDate}
@@ -43,11 +49,15 @@ func NewAppointment(w http.ResponseWriter, r *http.Request) {
   id, err := repository.Save(appointment)
   if err != nil {
       log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   idJson, err := json.Marshal(id)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   w.Write(idJson)
@@ -63,7 +73,9 @@ func AppointmentDetail(w http.ResponseWriter, r *http.Request) {
 
   parsedId, err := strconv.ParseInt(id, 10, 64)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   err = repository.Retrieve(appointment, parsedId)
@@ -72,7 +84,9 @@ func AppointmentDetail(w http.ResponseWriter, r *http.Request) {
       log.Println(err)
       appointmentJson, err := json.Marshal(nil)
       if err != nil {
-          log.Fatal(err)
+          log.Println(err)
+          http.Error(w, err.Error(), 500)
+          return
       }
       w.Write(appointmentJson)
       return
@@ -95,7 +109,9 @@ func AppointmentDetail(w http.ResponseWriter, r *http.Request) {
 
   appointmentJson, err := json.Marshal(appointmentData)
   if err != nil {
-      log.Fatal(err)
+    log.Println(err)
+    http.Error(w, err.Error(), 500)
+    return
   }
 
   w.Write(appointmentJson)
@@ -109,7 +125,9 @@ func AppointmentList(w http.ResponseWriter, r *http.Request) {
     err := repository.Search(&models.Appointment{}, &appointments)
 
     if err != nil {
-        log.Println(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
     }
 
     appointmentsData := make([]interface{}, len(appointments))
@@ -136,7 +154,9 @@ func AppointmentList(w http.ResponseWriter, r *http.Request) {
 
     appointmentsJson, err := json.Marshal(appointmentsData)
     if err != nil {
-        log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
     }
 
     w.Write(appointmentsJson)

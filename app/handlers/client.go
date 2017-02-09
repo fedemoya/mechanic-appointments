@@ -23,11 +23,15 @@ func NewClient(w http.ResponseWriter, r *http.Request) {
   id, err := repository.Save(client)
   if err != nil {
       log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   idJson, err := json.Marshal(id)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   w.Write(idJson)
@@ -43,18 +47,23 @@ func ClientDetail(w http.ResponseWriter, r *http.Request) {
 
   parsedId, err := strconv.ParseInt(id, 10, 64)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   err = repository.Retrieve(client, parsedId)
   if err != nil {
       log.Println(err)
-      client = nil
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   clientJson, err := json.Marshal(client)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   w.Write(clientJson)
@@ -67,14 +76,18 @@ func ClientList(w http.ResponseWriter, r *http.Request) {
     clients := []models.Client{}
     err := repository.Search(&models.Client{}, &clients)
 
-    if err != nil {
-        log.Println(err)
-    }
+  if err != nil {
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
+  }
 
     clientsJson, err := json.Marshal(clients)
-    if err != nil {
-        log.Fatal(err)
-    }
+  if err != nil {
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
+  }
 
     w.Write(clientsJson)
 }

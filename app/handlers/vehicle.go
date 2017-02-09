@@ -29,12 +29,16 @@ func NewVehicle(w http.ResponseWriter, r *http.Request) {
 
   parsedClientId, err := strconv.ParseInt(clientId, 10, 64)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   parsedYear, err := strconv.ParseInt(year, 10, 32)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   vehicle := &models.Vehicle{ClientId: parsedClientId, PlateNumber: plateNumber, ChassisNumber: chassisNumber, Brand: brand, Model: model, Year: int(parsedYear)}
@@ -42,11 +46,15 @@ func NewVehicle(w http.ResponseWriter, r *http.Request) {
   id, err := repository.Save(vehicle)
   if err != nil {
       log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   idJson, err := json.Marshal(id)
   if err != nil {
-      log.Fatal(err)
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
   }
 
   w.Write(idJson)
@@ -62,7 +70,7 @@ func NewVehicle(w http.ResponseWriter, r *http.Request) {
 //
 //   parsedId, err := strconv.ParseInt(id, 10, 64)
 //   if err != nil {
-//       log.Fatal(err)
+//       log.Println(err)
 //   }
 //
 //   err = repository.Retrieve(client, parsedId)
@@ -73,7 +81,7 @@ func NewVehicle(w http.ResponseWriter, r *http.Request) {
 //
 //   clientJson, err := json.Marshal(client)
 //   if err != nil {
-//       log.Fatal(err)
+//       log.Println(err)
 //   }
 //
 //   w.Write(clientJson)
@@ -92,7 +100,7 @@ func NewVehicle(w http.ResponseWriter, r *http.Request) {
 //
 //     clientsJson, err := json.Marshal(clients)
 //     if err != nil {
-//         log.Fatal(err)
+//         log.Println(err)
 //     }
 //
 //     w.Write(clientsJson)

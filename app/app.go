@@ -5,7 +5,6 @@ import(
     "time"
     "net/http"
     "github.com/gorilla/mux"
-    "mechanics-backend/app/persistance"
     "mechanics-backend/app/handlers"
 )
 
@@ -43,7 +42,7 @@ func main() {
 }
 
 func init_db()  {
-    manager := persistance.NewDBSchemaManager("mechanics.db")
-    manager.DropAppTables()
-    manager.CreateAppTables()
+    // manager := persistance.NewDBSchemaManager("mechanics.db")
+    // manager.DropAppTables()
+    // manager.CreateAppTables()
 }
