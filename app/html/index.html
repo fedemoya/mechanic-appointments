@@ -5,7 +5,11 @@
 <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src=js/all.js></script>
+<script src=js/appointments.js></script>
+<script src=js/client_detail.js></script>
+<script src=js/clients.js></script>
+<script src=js/new_client.js></script>
+<script src=js/new_vehicle.js></script>
 </head>
 <body>
 
@@ -16,12 +20,68 @@
   </div>
 
   <div data-role="navbar">
-      <a href="#new_client">Clientes</a>
-      <a href="#new_vehicle">Vehiculos</a>
+      <a href="#clients">Clientes</a>
       <a href="#appointments">Turnos</a>
   </div><!-- /navbar -->
 
 </div>
+
+
+<div data-role="page" id="clients">
+
+  <div data-role="header">
+      <h1>Clientes</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+  <a href="#new_client" class="ui-btn ui-icon-plus ui-btn-icon-left" align="center" id="btn_new_client">
+      Nuevo Cliente
+  </a>
+
+  <table data-role="table" class="ui-responsive" id="clients_table">
+  <thead>
+      <tr>
+          <th>Nombre</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+  </table>
+
+  </div>
+
+  <div data-role="footer" align="center">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+  </div>
+</div>
+
+
+<div data-role="page" id="client_detail">
+  
+  <div data-role="header">
+    <h1>Detalle Cliente</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+    <div id="client_data">
+    </div>
+
+    <p><strong>Vehiculos:</strong></p>
+
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive" id="client_vehicles_table">
+      <tbody>
+      </tbody>
+    </table>
+
+    <div data-role="footer" align="center">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+    </div>
+
+  </div>
+</div>
+
 
 <div data-role="page" id="new_client">
   
@@ -33,7 +93,7 @@
 
     <form action="javascript:submitClientForm()" id="new_client_form">
       Nombre<br>
-      <input type="text" name="Name"><br>
+      <input type="text" name="Name" id="new_client_name"><br>
       <input class="submit" type="submit" value="Enviar">
     </form>
 
@@ -41,9 +101,9 @@
       <p><strong>Nuevo cliente creado</strong></p>
     </div>
 
-    <!-- <div class="ui-input-btn ui-btn ui-corner-all ui-shadow">
-        <a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left">Add Me On Facebook</a>
-    </div> -->
+    <a href="#new_vehicle" onclick="setNewVehicleData()" class="ui-btn ui-icon-plus ui-btn-icon-left" align="center" style="display:none" id="btn_load_vehicle">
+      Cargar Vehiculo
+    </a>
 
     <div data-role="footer" align="center">
         <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
@@ -62,6 +122,8 @@
 
   <div data-role="main" class="ui-content">
       <form action="javascript:submitVehicleForm()" id="new_vehicle_form">
+          Cliente<br>
+          <input type="text" readonly id="new_vehicle_client"><br>
           N&uacutemero de Patente<br>
           <input type="text" name="PlateNumber"><br>
           N&uacutemero de Chasis<br>
@@ -75,7 +137,7 @@
           <input class="submit" type="submit" value="Enviar">
       </form>
 
-      <div id="new_client_confirm" align="center" style="display:none;background-color:grey;">
+      <div id="new_vehicle_confirm" align="center" style="display:none;background-color:grey;">
           <p><strong>Nuevo vehiculo creado</strong></p>
       </div>
   

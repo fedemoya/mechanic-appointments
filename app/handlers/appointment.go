@@ -122,7 +122,7 @@ func AppointmentList(w http.ResponseWriter, r *http.Request) {
     repository := persistance.NewRepository("mechanics.db")
 
     appointments := []models.Appointment{}
-    err := repository.Search(&models.Appointment{}, &appointments)
+    err := repository.Search(&models.Appointment{}, &appointments, "")
 
     if err != nil {
       log.Println(err)

@@ -59,14 +59,30 @@ func ClientDetail(w http.ResponseWriter, r *http.Request) {
       return
   }
 
-  clientJson, err := json.Marshal(client)
+  vehicles := []models.Vehicle{}
+  err = repository.Search(&models.Vehicle{}, &vehicles, "ClientId = ?", client.Id)
   if err != nil {
       log.Println(err)
       http.Error(w, err.Error(), 500)
       return
   }
 
-  w.Write(clientJson)
+  clientDetailData := struct {
+    ClientName string
+    Vehicles []models.Vehicle  
+  } {
+    client.Name,
+    vehicles,
+  }
+
+  clientDetailJson, err := json.Marshal(clientDetailData)
+  if err != nil {
+      log.Println(err)
+      http.Error(w, err.Error(), 500)
+      return
+  }
+
+  w.Write(clientDetailJson)
 }
 
 func ClientList(w http.ResponseWriter, r *http.Request) {
@@ -74,7 +90,7 @@ func ClientList(w http.ResponseWriter, r *http.Request) {
     repository := persistance.NewRepository("mechanics.db")
 
     clients := []models.Client{}
-    err := repository.Search(&models.Client{}, &clients)
+    err := repository.Search(&models.Client{}, &clients, "")
 
   if err != nil {
       log.Println(err)
