@@ -14,8 +14,12 @@ type Vehicle struct {
     Year int
 }
 
-func (r *Vehicle) Client (repo *persistance.Repository) *Client  {
+func (v *Vehicle) Client (repo *persistance.Repository) *Client  {
     client := &Client{}
-    repo.Retrieve(client, r.ClientId)
+    repo.Retrieve(client, v.ClientId)
     return client
+}
+
+func (v *Vehicle) Description() string {
+    return v.Brand + " " + v.Model
 }

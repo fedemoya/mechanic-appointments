@@ -3,6 +3,7 @@ package handlers
 import(
     "strconv"
     "log"
+    "time"
     "net/http"
     "encoding/json"
     "github.com/gorilla/mux"
@@ -12,23 +13,11 @@ import(
 
 func NewAppointment(w http.ResponseWriter, r *http.Request) {
 
-  clientId := r.FormValue("ClientId")
   vehicleId := r.FormValue("VehicleId")
   date := r.FormValue("Date")
 
-  log.Println("Received the following ClientId: " + clientId)
   log.Println("Received the following VehicleId: " + vehicleId)
   log.Println("Received the following Date: " + date)
-
-
-  repository := persistance.NewRepository("mechanics.db")
-
-  parsedClientId, err := strconv.ParseInt(clientId, 10, 64)
-  if err != nil {
-      log.Println(err)
-      http.Error(w, err.Error(), 500)
-      return
-  }
 
   parsedVehicleId, err := strconv.ParseInt(vehicleId, 10, 64)
   if err != nil {
@@ -44,7 +33,8 @@ func NewAppointment(w http.ResponseWriter, r *http.Request) {
       return
   }
 
-  appointment := &models.Appointment{ClientId: parsedClientId, VehicleId: parsedVehicleId, Date: parsedDate}
+  repository := persistance.NewRepository("mechanics.db")
+  appointment := &models.Appointment{VehicleId: parsedVehicleId, Date: parsedDate}
 
   id, err := repository.Save(appointment)
   if err != nil {
@@ -118,11 +108,33 @@ func AppointmentDetail(w http.ResponseWriter, r *http.Request) {
 }
 
 func AppointmentList(w http.ResponseWriter, r *http.Request) {
+    var vars map[string]string = mux.Vars(r)
+    date := vars["date"]
+
+    log.Println("Received the following date: " + date)
+
+    var parsedDate int64 = 0
+    var err error 
+
+    if date != "" {
+        parsedDate, err = strconv.ParseInt(date, 10, 64)
+        if err != nil {
+            log.Println(err)
+            http.Error(w, err.Error(), 500)
+            return
+        }
+    }
 
     repository := persistance.NewRepository("mechanics.db")
 
     appointments := []models.Appointment{}
-    err := repository.Search(&models.Appointment{}, &appointments, "")
+    
+    if parsedDate > 0 {
+        err = repository.Search(&models.Appointment{}, &appointments, "date(Date, 'unixepoch')=date(?, 'unixepoch')", parsedDate)      
+    } else {
+        now := time.Now().Unix()
+        err = repository.Search(&models.Appointment{}, &appointments, "date(Date, 'unixepoch')=date(?, 'unixepoch')", now)
+    }
 
     if err != nil {
       log.Println(err)

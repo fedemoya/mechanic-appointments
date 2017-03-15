@@ -5,31 +5,71 @@
 		[
 			[
 				"cli",
-				"client"
+				"clientDetail"
+			],
+			[
+				"Cli",
+				"ClientName"
+			],
+			[
+				"th",
+				"th\tTag"
+			],
+			[
+				"int",
+				"int64"
+			],
+			[
+				"parse",
+				"parsedPrice"
+			],
+			[
+				"vehi",
+				"vehicleId"
+			],
+			[
+				"new_appointment_",
+				"new_appointment_vehicle"
+			],
+			[
+				"date",
+				"datepicker"
+			],
+			[
+				"new_",
+				"new_appointment"
+			],
+			[
+				"Rep",
+				"Reparation"
+			],
+			[
+				"re",
+				"reparations"
+			],
+			[
+				"clie",
+				"client_detail"
+			],
+			[
+				"new",
+				"new_vehicle"
+			],
+			[
+				"clientDet",
+				"clientDetailData"
 			],
 			[
 				"client",
 				"client_detail"
 			],
 			[
-				"Cli",
-				"Client"
-			],
-			[
 				"str",
 				"String"
 			],
 			[
-				"new",
-				"new_vehicle_form"
-			],
-			[
 				"if",
 				"if\tif"
-			],
-			[
-				"clie",
-				"clientId"
 			],
 			[
 				"Clie",
@@ -38,10 +78,6 @@
 			[
 				"app",
 				"appointments"
-			],
-			[
-				"new_",
-				"new_client"
 			],
 			[
 				"in",
@@ -191,25 +227,26 @@
 			"file": "app/html/index.html",
 			"settings":
 			{
-				"buffer_size": 4535,
+				"buffer_size": 8560,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/html/js/client_detail.js",
+			"file": "app/html/js/new_client.js",
 			"settings":
 			{
-				"buffer_size": 677,
+				"buffer_size": 958,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/models/appointment.go",
+			"file": "app/html/js/reparations.js",
 			"settings":
 			{
-				"buffer_size": 478,
+				"buffer_size": 1513,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -217,34 +254,16 @@
 			"file": "app/html/js/appointments.js",
 			"settings":
 			{
-				"buffer_size": 521,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/handlers/client.go",
-			"settings":
-			{
-				"buffer_size": 2229,
+				"buffer_size": 1468,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/persistance/repository.go",
+			"file": "app/handlers/reparation.go",
 			"settings":
 			{
-				"buffer_size": 3039,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/handlers/appointment.go",
-			"settings":
-			{
-				"buffer_size": 3761,
-				"encoding": "UTF-8",
+				"buffer_size": 4435,
 				"line_ending": "Unix"
 			}
 		}
@@ -294,25 +313,41 @@
 		"/Users/alberto/Code/mechanics-backend/app/handlers",
 		"/Users/alberto/Code/mechanics-backend/app/html",
 		"/Users/alberto/Code/mechanics-backend/app/html/js",
-		"/Users/alberto/Code/mechanics-backend/app/models"
+		"/Users/alberto/Code/mechanics-backend/app/models",
+		"/Users/alberto/Code/mechanics-backend/app/persistance",
+		"/Users/alberto/Code/mechanics-backend/tests",
+		"/Users/alberto/Code/mechanics-backend/tests/miscellany"
 	],
 	"file_history":
 	[
-		"/Users/alberto/Code/mechanics-backend/app/handlers/appointment.go",
 		"/Users/alberto/Code/mechanics-backend/app/app.go",
-		"/Users/alberto/Code/mechanics-backend/app/html/js/clients.js",
-		"/Users/alberto/Code/mechanics-backend/app/html/js/appointments.js",
-		"/Users/alberto/Code/mechanics-backend/app/html/js/new_vehicle.js",
-		"/Users/alberto/Code/mechanics-backend/app/html/js/new_client.js",
+		"/Users/alberto/Code/mechanics-backend/app/persistance/db_schema_manager.go",
 		"/Users/alberto/Code/mechanics-backend/app/html/js/client_detail.js",
-		"/Users/alberto/Code/mechanics-backend/app/html/js/all.js",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/new_client.js",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/new_appointment.js",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/new_reparation.js",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/new_vehicle.js",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/reparations.js",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/appointments.js",
+		"/Users/alberto/Code/mechanics-backend/app/models/payment.go",
+		"/Users/alberto/Code/mechanics-backend/app/models/reparation.go",
 		"/Users/alberto/Code/mechanics-backend/app/handlers/client.go",
-		"/Users/alberto/Code/mechanics-backend/app/models/client.go",
+		"/Users/alberto/Code/mechanics-backend/app/handlers/appointment.go",
+		"/Users/alberto/Code/mechanics-backend/app/handlers/reparation.go",
+		"/Users/alberto/Code/mechanics-backend/app/persistance/repository.go",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/clients.js",
+		"/Users/alberto/Code/mechanics-backend/tests/miscellany/slice_reflect_test.go",
+		"/Users/alberto/Code/mechanics-backend/tests/miscellany/modf_test.go",
+		"/Users/alberto/Code/mechanics-backend/app/models/appointment.go",
+		"/Users/alberto/Code/mechanics-backend/app/handlers/payment.go",
+		"/Users/alberto/Code/mechanics-backend/app/models/vehicle.go",
 		"/Users/alberto/Code/mechanics-backend/app/handlers/vehicle.go",
+		"/Users/alberto/Code/mechanics-backend/app/html/index.html",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/all.js",
+		"/Users/alberto/Code/mechanics-backend/app/models/client.go",
 		"/Users/alberto/Code/mechanics-backend/app/html/appointments.html",
 		"/Users/alberto/Code/mechanics-backend/app/html/new_vehicle.html",
 		"/Users/alberto/Code/mechanics-backend/app/html/new_client.html",
-		"/Users/alberto/Code/mechanics-backend/app/models/appointment.go",
 		"/Users/alberto/Code/mechanics-backend/.gitignore",
 		"/Users/alberto/Library/Application Support/Sublime Text 3/Packages/GoSublime/USAGE.md",
 		"/Users/alberto/Tesina/informe_tesina/diapos/tex/implementacion_causalizacion.tex",
@@ -420,6 +455,62 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pointments_date').change(function (e) {\n\n  //       $('#appointments_table tbody').empty();\n        \n  //       var date = $(this).datepicker(\"getDate\");\n  //       var milliseconds_time = date.getTime();\n  //       var seconds_time = milliseconds_time / 1000;\n                \n  //       $.get( \"/appointments/\" + seconds_time, function( data ) {\n  //         var appointments = JSON.parse(data);\n  //         appointments.forEach(function(appointment) {\n  //             console.log('<tr><td>' + appointment['ClientName'] + '</td><td>' + appointment['VehicleDescription'] + '</td></tr>');\n  //             $('#appointments_table tbody').append(\n  //                 '<tr><td>' + appointment['ClientName'] + '</td><td>' + appointment['VehicleDescription'] + '</td></tr>'\n  //             );\n  //         });\n  //     });\n  //   }\n  // );",
+			"loadClientVehicle",
+			"new_vehicle_form",
+			"Appointment",
+			"appointment",
+			"Appointment",
+			"appointment",
+			"Appointment",
+			"appointment",
+			"Appointment",
+			"appointment",
+			"Description",
+			"Appointment",
+			"appointment",
+			"appointments",
+			"Appointment",
+			"<thead>",
+			"class=\"ui-responsive\"",
+			"reflow",
+			"columntoggle",
+			"ui-responsive",
+			"clientId",
+			"createdClient",
+			"new_vehicle",
+			"/.",
+			"appointment",
+			"appointmentsData",
+			"VehicleId",
+			"appointment",
+			"Appointment",
+			"appointment",
+			"reparation",
+			"Description",
+			"description",
+			"Description",
+			"description",
+			"reparation",
+			"clients",
+			"reparationlData",
+			"payment",
+			"reparation",
+			"Reparation",
+			"vehicles",
+			"Vehicles",
+			"vehicles",
+			"Vehicle",
+			"client",
+			"Name",
+			"name",
+			"Name",
+			"name",
+			"Name",
+			"name",
+			"Name",
+			"Vehicle",
+			"CreatedClient",
 			"clientDetoñJson",
 			"clientJson",
 			"data",
@@ -491,49 +582,7 @@
 			"OneDHeatTransfer_simple",
 			"sst_data_fh",
 			"$n",
-			"\";\n",
-			"sst",
-			"simple_strategy_avgs",
-			"sst_count",
-			"sst_sum",
-			"simple_strategy_avgs",
-			"sst_count",
-			"sst_sum",
-			"$i",
-			"$tmp_fh",
-			"$fh",
-			"tmp_filename",
-			"$filename",
-			"debug",
-			"$fh",
-			".data",
-			"cStrategy2",
-			"mmo2",
-			"ast_c2",
-			"sd2",
-			"causalEqsBeg",
-			"_mmo_class.equations_ref().equations_ref() = _causalEqsBegining",
-			"makeCausalBegining",
-			"expression",
-			"unknownAdjEq",
-			"eqAdjUnknown",
-			"eqAdjEdge",
-			"eq",
-			"ast_c",
-			"sd",
-			"_causalEqsEndIndex",
-			"unknown",
-			"causalEqsEndIndex",
-			"causalize_simple",
-			"no_opt",
-			"std",
-			"void rlc_test() {\n\n  bool r;\n\n  StoredDef sd = parseFile(\"rlc.mo\",r);\n\n  if (!r)\n    ERROR(\"Can't parse file\\n\");\n\n  Class ast_c = boost::get<Class>(sd.classes().front());\n  MMO_Class mmo(ast_c);\n\n  UnknownsCollector collector(mmo);\n  ExpList unknowns = collector.collectUnknowns();\n\n  CausalizationStrategy cStrategy(mmo);\n  cStrategy.causalize(\"Anything\");\n\n  std::cout << mmo << std::endl;\n\n  check_causality(mmo, unknowns);\n\n}",
-			"_causalEqsMiddle",
-			"no_opt",
-			"rlc_loop",
-			"rlc_loop_no_opt_test",
-			"no_opt",
-			"_causalEqsEnd"
+			"\";\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -561,15 +610,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4535,
+						"buffer_size": 8560,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1739,
-								1739
+								3120,
+								3120
 							]
 						],
 						"settings":
@@ -579,68 +628,70 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 211.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/html/js/client_detail.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 677,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								457,
-								436
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 252.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/models/appointment.go",
-					"semi_transient": true,
+					"buffer": 1,
+					"file": "app/html/js/new_client.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 478,
+						"buffer_size": 958,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								922,
+								922
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Go/Go.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/html/js/reparations.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1513,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								607,
+								623
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -649,85 +700,21 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 521,
+						"buffer_size": 1468,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								529,
+								546
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "app/handlers/client.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2229,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1326,
-								1332
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Go/Go.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 779.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/persistance/repository.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3039,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3013,
-								3013
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Go/Go.sublime-syntax",
-							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -738,20 +725,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "app/handlers/appointment.go",
+					"buffer": 4,
+					"file": "app/handlers/reparation.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3761,
+						"buffer_size": 4435,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2892,
-								2892
+								3413,
+								3413
 							]
 						],
 						"settings":
@@ -761,10 +748,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1890.0,
+						"translation.y": 2380.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -772,7 +759,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -787,18 +774,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.408652600753,
 			1.0
 		],
 		"rows":
@@ -834,8 +814,152 @@
 		"selected_items":
 		[
 			[
+				"repara",
+				"app/handlers/reparation.go"
+			],
+			[
+				"htmlapp",
+				"app/html/js/appointments.js"
+			],
+			[
+				"reparas",
+				"app/html/js/reparations.js"
+			],
+			[
+				"clien",
+				"app/html/js/client_detail.js"
+			],
+			[
 				"app",
+				"app/app.go"
+			],
+			[
+				"manag",
+				"app/persistance/db_schema_manager.go"
+			],
+			[
+				"ap",
+				"app/app.go"
+			],
+			[
+				"payme",
+				"app/models/payment.go"
+			],
+			[
+				"modelrepara",
+				"app/models/reparation.go"
+			],
+			[
+				"reparation",
+				"app/handlers/reparation.go"
+			],
+			[
+				"handl",
 				"app/handlers/appointment.go"
+			],
+			[
+				"handlersclie",
+				"app/handlers/client.go"
+			],
+			[
+				"clientde",
+				"app/html/js/client_detail.js"
+			],
+			[
+				"clie",
+				"app/html/js/clients.js"
+			],
+			[
+				"repor",
+				"app/persistance/repository.go"
+			],
+			[
+				"handapp",
+				"app/handlers/appointment.go"
+			],
+			[
+				"appo",
+				"app/models/appointment.go"
+			],
+			[
+				"shc",
+				"app/persistance/db_schema_manager.go"
+			],
+			[
+				"appoin",
+				"app/handlers/appointment.go"
+			],
+			[
+				"modelpa",
+				"app/models/payment.go"
+			],
+			[
+				"pa",
+				"app/handlers/payment.go"
+			],
+			[
+				"handler",
+				"app/handlers/payment.go"
+			],
+			[
+				"pay",
+				"app/handlers/payment.go"
+			],
+			[
+				"modelap",
+				"app/models/appointment.go"
+			],
+			[
+				"hand",
+				"app/handlers/appointment.go"
+			],
+			[
+				"db",
+				"app/persistance/db_schema_manager.go"
+			],
+			[
+				"mana",
+				"app/persistance/db_schema_manager.go"
+			],
+			[
+				"vehi",
+				"app/models/vehicle.go"
+			],
+			[
+				"modelappo",
+				"app/models/appointment.go"
+			],
+			[
+				"sch",
+				"app/persistance/db_schema_manager.go"
+			],
+			[
+				"modelpay",
+				"app/models/payment.go"
+			],
+			[
+				"paym",
+				"app/handlers/payment.go"
+			],
+			[
+				"handlers",
+				"app/handlers/client.go"
+			],
+			[
+				"client",
+				"app/html/js/client_detail.js"
+			],
+			[
+				"new",
+				"app/html/js/new_client.js"
+			],
+			[
+				"inde",
+				"app/html/index.html"
+			],
+			[
+				"new_",
+				"app/html/js/new_vehicle.js"
 			],
 			[
 				"reposi",
@@ -846,16 +970,8 @@
 				"app/models/client.go"
 			],
 			[
-				"handl",
-				"app/handlers/client.go"
-			],
-			[
 				"handlapp",
 				"app/handlers/appointment.go"
-			],
-			[
-				"hand",
-				"app/handlers/vehicle.go"
 			],
 			[
 				"",
@@ -864,10 +980,6 @@
 			[
 				"vehicle",
 				"app/handlers/vehicle.go"
-			],
-			[
-				"client",
-				"app/models/client.go"
 			],
 			[
 				"causali",
@@ -990,7 +1102,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -998,7 +1110,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 146.0,
+	"side_bar_width": 255.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

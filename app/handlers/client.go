@@ -67,12 +67,28 @@ func ClientDetail(w http.ResponseWriter, r *http.Request) {
       return
   }
 
-  clientDetailData := struct {
+  type VehicleHistory struct {
+    VehicleDescription string
+    Reparations []models.Reparation
+  }
+
+  type ClientDetail struct {
     ClientName string
-    Vehicles []models.Vehicle  
-  } {
-    client.Name,
-    vehicles,
+    VehiclesHistory []VehicleHistory
+  }
+
+  clientDetailData := ClientDetail{ClientName: client.Name, VehiclesHistory: nil}
+
+  for _, vehicle := range vehicles {
+    reparations := []models.Reparation{}
+    err = repository.Search(&models.Reparation{}, &reparations, "VehicleId = ?", vehicle.Id)
+    if err != nil {
+        log.Println(err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+    vehicleHistory := VehicleHistory{VehicleDescription: vehicle.Description(), Reparations: reparations}
+    clientDetailData.VehiclesHistory = append(clientDetailData.VehiclesHistory, vehicleHistory)
   }
 
   clientDetailJson, err := json.Marshal(clientDetailData)

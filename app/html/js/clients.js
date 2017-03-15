@@ -15,3 +15,7 @@ function setClientDetailData(clientId) {
   $('#client_detail').data("clientId", clientId);
   // $.mobile.pageContainer.pagecontainer("change", "#client_detail");
 }
+
+$(document).on("pagehide", "#clients", function(){
+  $('#clients_table tbody').empty();
+})

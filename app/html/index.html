@@ -2,14 +2,19 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script><script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/master/jquery.mobile.datepicker.js"></script>
 <script src=js/appointments.js></script>
 <script src=js/client_detail.js></script>
 <script src=js/clients.js></script>
 <script src=js/new_client.js></script>
 <script src=js/new_vehicle.js></script>
+<script src=js/new_appointment.js></script>
+<script src=js/reparations.js></script>
+<script src=js/new_reparation.js></script>
 </head>
 <body>
 
@@ -22,8 +27,8 @@
   <div data-role="navbar">
       <a href="#clients">Clientes</a>
       <a href="#appointments">Turnos</a>
+      <a href="#reparations">Reparaciones</a>
   </div><!-- /navbar -->
-
 </div>
 
 
@@ -39,9 +44,9 @@
       Nuevo Cliente
   </a>
 
-  <table data-role="table" class="ui-responsive" id="clients_table">
+  <table data-role="table" class="ui-responsive ui-body-d table-stripe" id="clients_table">
   <thead>
-      <tr>
+      <tr class="ui-bar-d">
           <th>Nombre</th>
       </tr>
   </thead>
@@ -68,12 +73,14 @@
     <div id="client_data">
     </div>
 
-    <p><strong>Vehiculos:</strong></p>
+    <a href="#new_vehicle" onclick="client_detail_setNewVehicleData()" class="ui-btn ui-icon-plus ui-btn-icon-left" align="center">
+      Nuevo Vehiculo
+    </a>
 
-    <table data-role="table" data-mode="columntoggle" class="ui-responsive" id="client_vehicles_table">
-      <tbody>
-      </tbody>
-    </table>
+    <p>Reparaciones</p>
+
+    <div id="vehicles_history">
+    </div>
 
     <div data-role="footer" align="center">
         <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
@@ -97,11 +104,11 @@
       <input class="submit" type="submit" value="Enviar">
     </form>
 
-    <div id="new_client_confirm" align="center" style="display:none;background-color:grey;">
-      <p><strong>Nuevo cliente creado</strong></p>
+    <div align="center" style="height: 30px">
+      <p id="new_client_confirm"></p>
     </div>
 
-    <a href="#new_vehicle" onclick="setNewVehicleData()" class="ui-btn ui-icon-plus ui-btn-icon-left" align="center" style="display:none" id="btn_load_vehicle">
+    <a href="#new_vehicle" onclick="new_client_setNewVehicleData()" class="ui-btn ui-icon-plus ui-btn-icon-left" align="center" style="display:none" id="btn_load_vehicle">
       Cargar Vehiculo
     </a>
 
@@ -110,7 +117,6 @@
     </div>
 
   </div>
-
 </div>
 
 
@@ -157,25 +163,135 @@
 
   <div data-role="main" class="ui-content">
 
-      <input type="text" data-role="date">
+    <a href="#new_appointment" class="ui-btn ui-icon-plus ui-btn-icon-left" align="center" id="btn_new_appointment">
+      Nuevo Turno
+    </a>
 
-      <table data-role="table" data-mode="columntoggle" class="ui-responsive" id="appointments-table">
-      <thead>
-          <tr>
-              <th>Cliente</th>
-              <th>Vehiculo</th>
-          </tr>
-      </thead>
-      <tbody>
-      </tbody>
-      </table>
+    Fecha:
+    <input type="text" data-role="date" id="appointments_date">
+
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive ui-body-d table-stripe" id="appointments_table">
+    <thead>
+        <tr class="ui-bar-d">
+            <th>Cliente</th>
+            <th>Vehiculo</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
 
   </div>
 
   <div data-role="footer" align="center">
         <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
   </div>
+</div>
 
+
+<div data-role="page" id="new_appointment">
+
+  <div data-role="header">
+      <h1>Nuevo Turno</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+      <form action="javascript:submitAppointmentForm()" id="new_appointment_form">
+          Cliente<br>
+          <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Buscar cliente..." data-inset="true" id="new_appointment_clients">
+          </ul>
+          <br>
+          Vehiculo<br>
+          <input type="text" readonly id="new_appointment_vehicle"><br>
+          Fecha<br>
+          <input type="text" data-role="date" id="new_appointment_date"><br>
+          <input class="submit" type="submit" value="Enviar">
+      </form>
+
+      <div id="new_appointment_confirm" align="center" style="display:none;background-color:grey;">
+          <p><strong>Nuevo turno creado</strong></p>
+      </div>
+  
+    <div data-role="footer" align="center">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+    </div>
+
+  </div>
+</div>
+
+
+<div data-role="page" id="reparations">
+
+  <div data-role="header">
+      <h1>Reparaciones</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+    <a href="#new_reparation" class="ui-btn ui-icon-plus ui-btn-icon-left" align="center" id="btn_new_reparation">
+      Nueva Reparacion
+    </a>
+
+    Fecha:
+    <input type="text" data-role="date" id="reparations_date">
+
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive ui-body-d table-stripe" id="reparations_table">
+    <thead>
+        <tr class="ui-bar-d">
+            <th>Cliente</th>
+            <th>Vehiculo</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+
+  </div>
+
+  <div data-role="footer" align="center">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+  </div>
+</div>
+
+
+<div data-role="page" id="new_reparation">
+
+  <div data-role="header">
+      <h1>Nueva Reparaci&oacute;n</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <form action="javascript:submitReparationForm()" id="new_reparation_form">
+        Cliente<br>
+        <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Buscar cliente..." data-inset="true" id="new_reparation_clients">
+        </ul>
+        <br>
+        Vehiculo<br>
+        <input type="text" readonly id="new_reparation_vehicle"><br>
+        Fecha<br>
+        <input type="text" data-role="date" id="new_reparation_date"><br>
+        Precio<br>
+        <input type="number" id="new_reparation_price"><br>
+        Descripci&oacute;n
+        <textarea id="new_reparation_description"></textarea><br>
+        <label>
+            <input type="checkbox" id="reparation_full_payment">Pago total
+        </label>
+        Pago parcial<br>
+        <input type="number" id="reparation_partial_payment"><br>
+        <input class="submit" type="submit" value="Enviar" id="reparation_btn_submit">
+    </form>
+
+    <a href="#new_payment" onclick="new_reparation_newPaymentClicked()" class="ui-btn ui-icon-plus ui-btn-icon-left ui-disabled" align="center" id="btn_load_payment" disabled>
+      Cargar Pago
+    </a>
+  
+    <div data-role="footer" align="center">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+    </div>
+
+  </div>
 </div>
 
 </body>

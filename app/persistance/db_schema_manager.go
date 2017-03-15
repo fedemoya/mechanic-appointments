@@ -46,7 +46,6 @@ func (manager *DBSchemaManager) CreateAppTables()  {
 
     _, err = manager.db.Exec(`CREATE TABLE Appointment (
         Id integer primary key,
-        ClientId int64,
         VehicleId int64,
         Date integer
     )`)
@@ -58,7 +57,19 @@ func (manager *DBSchemaManager) CreateAppTables()  {
     _, err = manager.db.Exec(`CREATE TABLE Reparation (
         Id integer primary key,
         VehicleId int64,
-        Description string
+        Description string,
+        Date integer
+        Price int64
+    )`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`CREATE TABLE Payment (
+        Id integer primary key,
+        ReparationId int64,
+        Amount int64
     )`)
 
     if err != nil {
@@ -88,6 +99,12 @@ func (manager *DBSchemaManager) DropAppTables()  {
     }
 
     _, err = manager.db.Exec(`DROP TABLE IF EXISTS Reparation`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`DROP TABLE IF EXISTS Payment`)
 
     if err != nil {
         log.Fatalln(err)

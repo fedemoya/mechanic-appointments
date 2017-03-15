@@ -6,6 +6,7 @@ import(
     "net/http"
     "github.com/gorilla/mux"
     "mechanics-backend/app/handlers"
+    // "mechanics-backend/app/persistance"
 )
 
 func main() {
@@ -23,10 +24,14 @@ func main() {
     r.HandleFunc("/appointment", handlers.NewAppointment).Methods("POST")
     r.HandleFunc("/appointment/{id:[0-9]+}", handlers.AppointmentDetail).Methods("GET")
     r.HandleFunc("/appointments", handlers.AppointmentList).Methods("GET")
+    r.HandleFunc("/appointments/{date:[0-9]+}", handlers.AppointmentList).Methods("GET")
 
     r.HandleFunc("/vehicle", handlers.NewVehicle).Methods("POST")
-    // r.HandleFunc("/client/{id:[0-9]+}", handlers.ClientDetail).Methods("GET")
-    // r.HandleFunc("/clients", handlers.ClientList).Methods("GET")
+
+    r.HandleFunc("/reparation", handlers.NewReparation).Methods("POST")
+    r.HandleFunc("/reparation/{id:[0-9]+}", handlers.ReparationDetail).Methods("GET")
+    r.HandleFunc("/reparations", handlers.ReparationList).Methods("GET")
+    r.HandleFunc("/reparations/{date:[0-9]+}", handlers.ReparationList).Methods("GET")
 
     log.Println("Listening...")
 

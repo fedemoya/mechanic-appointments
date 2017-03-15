@@ -11,8 +11,7 @@ function submitClientForm() {
           data: formData,
           success: function(clientId) {
               CreatedClient["Id"] = clientId;
-              $('#new_client_confirm').fadeIn(1000);
-              $('#new_client_confirm').fadeOut(1000);
+              $('#new_client_confirm').html("<strong>Nuevo cliente creado</strong>");
               $('#btn_load_vehicle').show()
           }
       });
@@ -20,9 +19,15 @@ function submitClientForm() {
   });
 }
 
-function setNewVehicleData() {
+function new_client_setNewVehicleData() {
   if (!CreatedClient) {
     throw new Error('Missing client data in setNewVehicleData()');
   }
   $("#new_vehicle").data(CreatedClient);
 }
+
+$(document).on("pagehide", "#new_client", function(){
+  $('#new_client_form')[0].reset();
+  $('#new_client_confirm').html("");
+  $('#btn_load_vehicle').hide();
+})

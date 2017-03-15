@@ -1,12 +1,20 @@
+$(document).on("pageshow", "#new_vehicle", function(){
+    var createdClient = $('#new_vehicle').data();
+    if (!createdClient || createdClient["Id"] == 0) {
+        throw new Error("Missing CreatedClient in client_detail page");
+    }
+    $('#new_vehicle_client').val(createdClient["Name"]);
+});
+
 function submitVehicleForm() {
   $("#new_vehicle_form").submit(function(e){
       e.preventDefault();
       var formData = $('#new_vehicle_form').serialize();
-      var CreatedClient = $('#new_vehicle').data();
-      if (!CreatedClient) {
+      var createdClient = $('#new_vehicle').data();
+      if (!createdClient) {
         throw new Error('Missing client data in new_vehicle_form');
       }
-      var clientId = CreatedClient["Id"];
+      var clientId = createdClient["Id"];
       formData = formData + "&ClientId=" + clientId;
       $.ajax({
           url : '/vehicle',
@@ -20,3 +28,7 @@ function submitVehicleForm() {
       return false;
   });
 }
+
+$(document).on("pagehide", "#new_vehicle", function(){
+  $('#new_vehicle_form')[0].reset();
+});

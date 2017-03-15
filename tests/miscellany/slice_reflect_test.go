@@ -1,4 +1,4 @@
-package slicerflect
+package miscellany
 
 
 import(
