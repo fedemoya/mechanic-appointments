@@ -25,8 +25,8 @@ $(document).on("pageshow", "#new_reparation", function(){
 function new_reparation_loadClientVehicle(id) {
     $.get( "/client/" + id, function( data ) {
         clientDetail = JSON.parse(data);
-        var vehicle = clientDetail.Vehicles[0];
-        $("#new_reparation_vehicle").val(vehicle.Brand + " " + vehicle.Model);
+        var vehicle = clientDetail.VehiclesHistory[0];
+        $("#new_reparation_vehicle").val(vehicle.VehicleDescription);
         $("#new_reparation_vehicle").data("vehicleId", vehicle.Id);
     });
 }
@@ -49,8 +49,8 @@ function submitReparationForm() {
       formData = formData + "&Description=" + description;
       var fullPayment = $('#reparation_full_payment').is(':checked') ? 1 : 0;
       formData = formData + "&FullPayment=" + fullPayment
-      var partialPayment = $("reparation_partial_payment").val();
-      form = formData + "&PartialPayment=" + partialPayment;
+      var partialPayment = $("#reparation_partial_payment").val();
+      formData = formData + "&PartialPayment=" + partialPayment;
       $.ajax({
           url : '/reparation',
           type : 'post',

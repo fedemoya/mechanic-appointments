@@ -10,7 +10,7 @@ import (
 )
 
 type Repository struct {
-    db *sqlx.DB
+    DB *sqlx.DB
 }
 
 func NewRepository (dbName string) *Repository  {
@@ -21,7 +21,7 @@ func NewRepository (dbName string) *Repository  {
     if err != nil {
         log.Fatalln(err)
     }
-    return &Repository{db}
+    return &Repository{DB: db}
 }
 
 func (r *Repository) Save (object interface{}) (int64, error) {
@@ -76,7 +76,7 @@ func (r *Repository) Save (object interface{}) (int64, error) {
 
     var err error
     var res sql.Result
-    res, err = r.db.Exec(insert, queryArgs...)
+    res, err = r.DB.Exec(insert, queryArgs...)
 
     if err != nil {
         return 0, err
@@ -96,7 +96,7 @@ func (r *Repository) Retrieve (emptyObject interface{}, id int64) error {
 
     selectStr := "SELECT * FROM " + objectName + " WHERE Id = ?"
 
-    err := r.db.Get(emptyObject, selectStr, strconv.FormatInt(id, 10));
+    err := r.DB.Get(emptyObject, selectStr, strconv.FormatInt(id, 10));
 
     return err
 }
@@ -116,9 +116,9 @@ func (r *Repository) Search(emptyObject interface{}, objectsSlice interface{}, w
     var err error
 
     if len(args) > 0 {
-        err = r.db.Select(objectsSlice, selectStr, args...)
+        err = r.DB.Select(objectsSlice, selectStr, args...)
     } else {
-        err = r.db.Select(objectsSlice, selectStr)
+        err = r.DB.Select(objectsSlice, selectStr)
     }
 
     return err

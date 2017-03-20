@@ -68,6 +68,7 @@ func ClientDetail(w http.ResponseWriter, r *http.Request) {
   }
 
   type VehicleHistory struct {
+    Id int64
     VehicleDescription string
     Reparations []models.Reparation
   }
@@ -87,7 +88,7 @@ func ClientDetail(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), 500)
         return
     }
-    vehicleHistory := VehicleHistory{VehicleDescription: vehicle.Description(), Reparations: reparations}
+    vehicleHistory := VehicleHistory{Id: vehicle.Id, VehicleDescription: vehicle.Description(), Reparations: reparations}
     clientDetailData.VehiclesHistory = append(clientDetailData.VehiclesHistory, vehicleHistory)
   }
 
@@ -120,6 +121,35 @@ func ClientList(w http.ResponseWriter, r *http.Request) {
       http.Error(w, err.Error(), 500)
       return
   }
+
+    w.Write(clientsJson)
+}
+
+func DebtorList(w http.ResponseWriter, r *http.Request) {
+
+    repository := persistance.NewRepository("mechanics.db")
+
+    clients := []models.Client{}
+    query := "SELECT client.* FROM client, vehicle, reparation, payment "
+    query = query + "WHERE client.Id=vehicle.ClientId "
+    query = query + "AND vehicle.Id=reparation.VehicleId "
+    query = query + "AND reparation.Id=payment.ReparationId "
+    query = query + "GROUP BY client.Id, reparation.Id "
+    query = query + "HAVING reparation.Price > SUM(payment.Amount)"
+    err := repository.DB.Select(&clients, query)
+
+    if err != nil {
+        log.Println(err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+
+    clientsJson, err := json.Marshal(clients)
+    if err != nil {
+        log.Println(err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
 
     w.Write(clientsJson)
 }

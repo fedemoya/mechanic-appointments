@@ -69,6 +69,7 @@ func (manager *DBSchemaManager) CreateAppTables()  {
     _, err = manager.db.Exec(`CREATE TABLE Payment (
         Id integer primary key,
         ReparationId int64,
+        Date int64,
         Amount int64
     )`)
 

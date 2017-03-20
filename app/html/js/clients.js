@@ -1,5 +1,21 @@
 $(document).on("pageshow", "#clients", function(){
-  $.get( "/clients", function( data ) {
+  
+  loadClients(false);
+
+  $('#filter_debtors').click(function () {
+      $('#clients_table tbody').empty();
+      if ($(this).is(':checked')) {
+        loadClients(true);
+      } else {
+        loadClients(false);
+      }
+  });
+
+})
+
+function loadClients(filterDebtors) {
+  var route = filterDebtors ? "/clients/debtors" : "/clients"
+  $.get(route, function( data ) {
       var clients = JSON.parse(data);
       clients.forEach(function(client) {
           $('#clients_table tbody').append(
@@ -9,11 +25,10 @@ $(document).on("pageshow", "#clients", function(){
           );
       });
   });
-})
+}
 
 function setClientDetailData(clientId) {
   $('#client_detail').data("clientId", clientId);
-  // $.mobile.pageContainer.pagecontainer("change", "#client_detail");
 }
 
 $(document).on("pagehide", "#clients", function(){

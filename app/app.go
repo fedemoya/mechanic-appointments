@@ -20,6 +20,7 @@ func main() {
     r.HandleFunc("/client", handlers.NewClient).Methods("POST")
     r.HandleFunc("/client/{id:[0-9]+}", handlers.ClientDetail).Methods("GET")
     r.HandleFunc("/clients", handlers.ClientList).Methods("GET")
+    r.HandleFunc("/clients/debtors", handlers.DebtorList).Methods("GET")
 
     r.HandleFunc("/appointment", handlers.NewAppointment).Methods("POST")
     r.HandleFunc("/appointment/{id:[0-9]+}", handlers.AppointmentDetail).Methods("GET")
@@ -32,6 +33,9 @@ func main() {
     r.HandleFunc("/reparation/{id:[0-9]+}", handlers.ReparationDetail).Methods("GET")
     r.HandleFunc("/reparations", handlers.ReparationList).Methods("GET")
     r.HandleFunc("/reparations/{date:[0-9]+}", handlers.ReparationList).Methods("GET")
+
+    r.HandleFunc("/payment", handlers.NewPayment).Methods("POST")
+
 
     log.Println("Listening...")
 

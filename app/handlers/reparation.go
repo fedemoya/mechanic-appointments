@@ -134,9 +134,11 @@ func ReparationDetail(w http.ResponseWriter, r *http.Request) {
   }
 
   reparationData := struct {
+    Date int64
     Description string
     Payments []models.Payment  
   } {
+    reparation.Date,
     reparation.Description,
     payments,
   }
@@ -192,17 +194,19 @@ func ReparationList(w http.ResponseWriter, r *http.Request) {
         vehicle := reparation.Vehicle(repository)
 
         reparationData := struct {
-            ReparationId int64
+            Id int64
             ClientName string
             VehicleDescription string
             Date int64
             Price int64
+            Description string
         } {
           reparation.Id,
           client.Name,
           vehicle.Brand + " " + vehicle.Model,
           reparation.Date,
           reparation.Price,
+          reparation.Description,
         }
 
         reparationsData[i] = reparationData
