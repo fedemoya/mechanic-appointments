@@ -43,6 +43,9 @@ function loadReparationData(id) {
         '</strong></p>' +
         '<p><strong>Descripci&oacute;n: ' + 
         reparationDetail.Description +
+        '</strong></p>' +
+        '<p><strong>Precio: ' + 
+        reparationDetail.Price +
         '</strong></p>'
         );
 

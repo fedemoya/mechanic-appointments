@@ -136,10 +136,12 @@ func ReparationDetail(w http.ResponseWriter, r *http.Request) {
   reparationData := struct {
     Date int64
     Description string
+    Price int64
     Payments []models.Payment  
   } {
     reparation.Date,
     reparation.Description,
+    reparation.Price,
     payments,
   }
 

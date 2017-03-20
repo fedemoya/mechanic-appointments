@@ -20,15 +20,13 @@
 <body>
 
 <div data-role="page" id="menu">
-  
   <div data-role="header">
     <h1>Menu</h1>
   </div>
-
-  <div data-role="navbar" style="padding-left: 2px;padding-right: 2px" >
-      <a href="#clients">Clientes</a>
-      <a href="#appointments">Turnos</a>
-      <a href="#reparations">Reparaciones</a>
+  <div style="padding-left: 10px;padding-right: 10px" >
+    <a class="ui-btn ui-icon-arrow-r ui-btn-icon-right" href="#clients">Clientes</a>
+    <a class="ui-btn ui-icon-arrow-r ui-btn-icon-right" href="#appointments">Turnos</a>
+    <a class="ui-btn ui-icon-arrow-r ui-btn-icon-right" href="#reparations">Reparaciones</a>
   </div><!-- /navbar -->
 </div>
 
@@ -62,7 +60,7 @@
   </div>
 
   <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
   </div>
 </div>
 
@@ -88,7 +86,7 @@
     </div>
 
     <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
     </div>
 
   </div>
@@ -118,7 +116,7 @@
     </a>
 
     <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
     </div>
 
   </div>
@@ -153,7 +151,7 @@
       </div>
   
     <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
     </div>
 
   </div>
@@ -189,7 +187,7 @@
   </div>
 
   <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
   </div>
 </div>
 
@@ -218,7 +216,7 @@
       </div>
   
     <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
     </div>
 
   </div>
@@ -256,7 +254,7 @@
   </div>
 
   <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
   </div>
 </div>
 
@@ -289,12 +287,16 @@
         <input class="submit" type="submit" value="Enviar" id="reparation_btn_submit">
     </form>
 
+    <div id="new_reparation_confirm" align="center" style="display:none;background-color:grey;">
+      <p><strong>Nueva reparación creada</strong></p>
+    </div>
+
     <a href="#new_payment" onclick="new_reparation_newPaymentClicked()" class="ui-btn ui-icon-plus ui-btn-icon-left ui-disabled" align="center" id="btn_load_payment" disabled>
       Cargar Pago
     </a>
   
     <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
     </div>
 
   </div>
@@ -312,12 +314,13 @@
     <div id="reparation_data">
     </div>
 
-    <div style="border:2px solid black;padding-left: 10px;padding-right: 10px;">
+    <fieldset style="border:2px solid black;padding-left: 10px;padding-right: 10px;">
+      <legend>Nuevo Pago</legend>
       <form action="javascript:submitPaymentForm()">
           <input type="number" id="new_payment_amount">
-          <input class="submit" type="submit" value="Cargar Nuevo Pago">
+          <input class="submit" type="submit" value="Enviar">
       </form>
-    </div>    
+    </fieldset>
 
     <p>Pagos</p>
 
@@ -333,7 +336,7 @@
     </table>
 
     <div data-role="footer" align="center">
-        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left">Volver</a>
+        <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
     </div>
 
   </div>

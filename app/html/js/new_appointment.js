@@ -15,10 +15,9 @@ $(document).on("pageshow", "#new_appointment", function() {
 
 function new_appointment_loadClientVehicle(id) {
     $.get( "/client/" + id, function( data ) {
-        var clientDetail = JSON.parse(data);
-        var vehicle = clientDetail.Vehicles[0];
-        console.log(vehicle.Brand + " " + vehicle.Model);
-        $("#new_appointment_vehicle").val(vehicle.Brand + " " + vehicle.Model);
+        clientDetail = JSON.parse(data);
+        var vehicle = clientDetail.VehiclesHistory[0];
+        $("#new_appointment_vehicle").val(vehicle.VehicleDescription);
         $("#new_appointment_vehicle").data("vehicleId", vehicle.Id);
     });
 }

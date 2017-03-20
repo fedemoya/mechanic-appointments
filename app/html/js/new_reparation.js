@@ -56,6 +56,8 @@ function submitReparationForm() {
           type : 'post',
           data : formData,
           success : function(id) {
+              $('#new_reparation_confirm').fadeIn(1000);
+              $('#new_reparation_confirm').fadeOut(1000);
               $('#reparation_btn_submit').prop('disabled', true);
               if (fullPayment == 0) {
                 $('#btn_load_payment').removeClass('ui-disabled');
@@ -67,6 +69,7 @@ function submitReparationForm() {
 }
 
 $(document).on("pagehide", "#new_reparation", function(){
+  $('#new_reparation_clients').empty();
   $('#new_reparation_form')[0].reset();
   $('#reparation_btn_submit').prop('disabled', false);
   $('#reparation_btn_submit').prop('value', "Enviar");
