@@ -85,7 +85,7 @@ func NewReparation(w http.ResponseWriter, r *http.Request) {
     paymentAmount = parsedPartialPayment
   }
 
-  payment := &models.Payment{ReparationId: reparation_id, Amount: paymentAmount}
+  payment := &models.Payment{ReparationId: reparation_id, Date: parsedDate, Amount: paymentAmount}
   _, err = repository.Save(payment)
   if err != nil {
       log.Println(err)

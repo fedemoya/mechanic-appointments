@@ -1,3 +1,7 @@
+$(document).on('pageshow', '#new_client', function () {
+  $('#btn_new_client_submit').prop('disabled', false);
+});
+
 var CreatedClient = {"Name": "", "Id": 0};
 
 function submitClientForm() {
@@ -11,8 +15,11 @@ function submitClientForm() {
           data: formData,
           success: function(clientId) {
               CreatedClient["Id"] = clientId;
-              $('#new_client_confirm').html("<strong>Nuevo cliente creado</strong>");
-              $('#btn_load_vehicle').show()
+              $('#btn_new_client_submit').prop("disabled", true);
+              $('#new_client_confirm').fadeIn(1000);
+              $('#new_client_confirm').fadeOut(1000, function () {
+                $('#btn_load_vehicle').show();
+              });
           }
       });
       return false;

@@ -1,4 +1,5 @@
 $(document).on("pageshow", "#new_appointment", function() {
+    $('#btn_new_appointment_submit').prop('disabled', false);
     $.get( "/clients", function( data ) {
           var clients = JSON.parse(data);
           clients.forEach(function(client) {
@@ -26,19 +27,15 @@ function submitAppointmentForm() {
   $("#new_appointment_form").submit(function(e){
       e.preventDefault();
       var date = $("#new_appointment_date").datepicker("getDate");
-      var milliseconds_time = date.getTime();
-      if (!date) {
-        throw new Error('Missing date in new_appointment_form');
-      }
-      var seconds_time = milliseconds_time / 1000; 
       var vehicleId = $("#new_appointment_vehicle").data("vehicleId");
       var formData = "VehicleId=" + vehicleId;
-      formData = formData + "&Date=" + seconds_time;
+      formData = formData + "&Date=" + getTimeInSeconds(date);
       $.ajax({
           url : '/appointment',
           type : 'post',
           data : formData,
-          success : function(){
+          success : function() {
+              $('btn_new_appointment_submit').prop("disabled", true);
               $('#new_appointment_confirm').fadeIn(1000);
               $('#new_appointment_confirm').fadeOut(1000);
           }

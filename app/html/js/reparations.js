@@ -1,22 +1,18 @@
-$(document).on("pageshow", "#reparations", function() {
-
-  var milliseconds_time = $.now();
-  var seconds_time = Math.floor(milliseconds_time / 1000);
-
-  loadReparations(seconds_time);
-
-  $('#reparations_date').change(function (e) {
-
+$(document).on("pagecreate", "#reparations", function () {
+  $('#reparations_date').change(function () {
       $('#reparations_table tbody').empty();
-      $('#reparations_date tbody').empty();
-        
+      $('#reparations_date tbody').empty();   
       var date = $(this).datepicker("getDate");
-      var milliseconds_time = date.getTime();
-      var seconds_time = Math.floor(milliseconds_time / 1000);
-                
-      loadReparations(seconds_time);
+      loadReparations(getTimeInSeconds(date));
   });
+});
 
+$(document).on("pageshow", "#reparations", function() {
+  
+  $('#reparations_table tbody').empty();
+  $('#reparations_date').val("");
+
+  loadReparations(getCurrentTimeInSeconds());
 });
 
 function loadReparations(date) {
@@ -42,8 +38,3 @@ function loadReparations(date) {
 function setReparationDetailData(id) {
   $('#reparation_detail').data("reparationId", id);
 }
-
-$(document).on("pagehide", "#reparations", function(){
-  $('#reparations_table tbody').empty();
-  $('#reparations_date').val("");
-})

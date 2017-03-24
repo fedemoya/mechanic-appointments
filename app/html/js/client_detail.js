@@ -1,5 +1,8 @@
 $(document).on("pageshow", "#client_detail", function(){
     
+    $('#client_data').empty();
+    $('#client_vehicles_table tbody').empty();
+
     var clientId = $('#client_detail').data("clientId");
     
     if (!clientId) {
@@ -19,38 +22,41 @@ $(document).on("pageshow", "#client_detail", function(){
       );
       
       var i = 0;
-      clientDetail.VehiclesHistory.forEach(function(vehicleHistory) {
-          
-          var html = '<div data-role="collapsible" data-mini="true">' +
-            '<h4>' +
-            vehicleHistory.VehicleDescription +
-            '</h4>' +
-            '<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-body-d table-stripe" id="vehicle_' + i + '_history">' +
-            '<thead>' +
-            ' <tr class="ui-bar-d">' +
-            '   <th>Fecha</th>' +
-            '   <th>Precio</th>' +
-            ' </tr>' +
-            '</thead>' +
-            '<tbody>' +
-            '</tbody>' +
-            '</table>' +
-            '</div>';
+      var vehiclesHistory = clientDetail.VehiclesHistory
+      if (vehiclesHistory != null) {
+        vehiclesHistory.forEach(function(vehicleHistory) {
+            
+            var html = '<div data-role="collapsible" data-mini="true">' +
+              '<h4>' +
+              vehicleHistory.VehicleDescription +
+              '</h4>' +
+              '<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-body-d table-stripe" id="vehicle_' + i + '_history">' +
+              '<thead>' +
+              ' <tr class="ui-bar-d">' +
+              '   <th>Fecha</th>' +
+              '   <th>Precio</th>' +
+              ' </tr>' +
+              '</thead>' +
+              '<tbody>' +
+              '</tbody>' +
+              '</table>' +
+              '</div>';
 
-          $('#vehicles_history').append(html).enhanceWithin();
-          
-          vehicleHistory.Reparations.forEach(function function_name(reparation) {
-            var milliseconds_date = reparation['Date'] * 1000;
-            var d =  new Date(milliseconds_date);
-            var string_date = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
-            $('#vehicle_' + i + '_history tbody').append(
-              '<tr><td>' + string_date + '</td><td>' + reparation['Price'] + '</td></tr>'
-            );
-          });
-      });
+            $('#vehicles_history').append(html).enhanceWithin();
+            
+            vehicleHistory.Reparations.forEach(function function_name(reparation) {
+              var milliseconds_date = reparation['Date'] * 1000;
+              var d =  new Date(milliseconds_date);
+              var string_date = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
+              $('#vehicle_' + i + '_history tbody').append(
+                '<tr><td>' + string_date + '</td><td>' + reparation['Price'] + '</td></tr>'
+              );
+            });
+        });
+      }
     });
 
-})
+});
 
 function client_detail_setNewVehicleData() {
   var clientId = $('#client_detail').data("clientId");
@@ -58,8 +64,3 @@ function client_detail_setNewVehicleData() {
   var CreatedClient = {"Id": clientId, "Name": clientName};
   $("#new_vehicle").data(CreatedClient);
 }
-
-$(document).on("pagehide", "#client_detail", function(){
-  $('#client_data').empty();
-  $('#client_vehicles_table tbody').empty();
-})

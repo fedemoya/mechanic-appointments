@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"cli",
+				"clients"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"rep",
+				"reparationId"
+			],
+			[
+				"str",
+				"string_date"
+			],
+			[
+				"repra",
+				"reparationDetail"
+			],
+			[
 				"vehi",
 				"vehicles_history"
 			],
@@ -26,14 +50,6 @@
 			[
 				"Ve",
 				"VehicleHistory"
-			],
-			[
-				"rep",
-				"reparations"
-			],
-			[
-				"cli",
-				"client"
 			],
 			[
 				"client",
@@ -110,10 +126,6 @@
 			[
 				"clientDet",
 				"clientDetailData"
-			],
-			[
-				"str",
-				"String"
 			],
 			[
 				"if",
@@ -275,16 +287,16 @@
 			"file": "app/html/index.html",
 			"settings":
 			{
-				"buffer_size": 8574,
+				"buffer_size": 10064,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/html/js/client_detail.js",
+			"file": "app/html/js/new_appointment.js",
 			"settings":
 			{
-				"buffer_size": 2176,
+				"buffer_size": 1919,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -293,7 +305,69 @@
 			"file": "app/html/js/new_reparation.js",
 			"settings":
 			{
-				"buffer_size": 2790,
+				"buffer_size": 2948,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/persistance/db_schema_manager.go",
+			"settings":
+			{
+				"buffer_size": 2684,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/handlers/reparation.go",
+			"settings":
+			{
+				"buffer_size": 5542,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/handlers/client.go",
+			"settings":
+			{
+				"buffer_size": 3760,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/client.go",
+			"settings":
+			{
+				"buffer_size": 66,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/app.go",
+			"settings":
+			{
+				"buffer_size": 1854,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/persistance/repository.go",
+			"settings":
+			{
+				"buffer_size": 3046,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/handlers/payment.go",
+			"settings":
+			{
+				"buffer_size": 1434,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -351,26 +425,27 @@
 	],
 	"file_history":
 	[
+		"/Users/alberto/Code/mechanics-backend/app/html/js/new_reparation.js",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/reparation_detail.js",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/clients.js",
 		"/Users/alberto/Code/mechanics-backend/app/html/js/reparations.js",
-		"/Users/alberto/Code/mechanics-backend/app/handlers/client.go",
+		"/Users/alberto/Code/mechanics-backend/app/html/js/new_client.js",
 		"/Users/alberto/Code/mechanics-backend/app/html/js/client_detail.js",
+		"/Users/alberto/Code/mechanics-backend/app/models/payment.go",
+		"/Users/alberto/Code/mechanics-backend/app/handlers/client.go",
 		"/Users/alberto/Code/mechanics-backend/app/models/reparation.go",
 		"/Users/alberto/Code/mechanics-backend/app/persistance/repository.go",
 		"/Users/alberto/Code/mechanics-backend/app/persistance/db_schema_manager.go",
 		"/Users/alberto/Code/mechanics-backend/app/models/vehicle.go",
 		"/Users/alberto/Code/mechanics-backend/app/handlers/reparation.go",
 		"/Users/alberto/Code/mechanics-backend/app/app.go",
-		"/Users/alberto/Code/mechanics-backend/app/html/js/new_reparation.js",
 		"/Users/alberto/Code/mechanics-backend/app/models/client.go",
 		"/Users/alberto/Code/mechanics-backend/app/handlers/appointment.go",
-		"/Users/alberto/Code/mechanics-backend/app/models/payment.go",
 		"/Users/alberto/Code/mechanics-backend/app/handlers/vehicle.go",
-		"/Users/alberto/Code/mechanics-backend/app/html/js/new_client.js",
 		"/Users/alberto/Code/mechanics-backend/app/html/js/new_payment.js",
 		"/Users/alberto/Code/mechanics-backend/app/html/js/new_vehicle.js",
 		"/Users/alberto/Code/mechanics-backend/app/html/js/appointments.js",
 		"/Users/alberto/Code/mechanics-backend/app/html/js/new_appointment.js",
-		"/Users/alberto/Code/mechanics-backend/app/html/js/clients.js",
 		"/Users/alberto/Code/mechanics-backend/tests/miscellany/slice_reflect_test.go",
 		"/Users/alberto/Code/mechanics-backend/tests/miscellany/modf_test.go",
 		"/Users/alberto/Code/mechanics-backend/app/models/appointment.go",
@@ -487,6 +562,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"appointment",
+			"ui-icon-home",
+			"log",
+			".\n",
+			"r.db",
+			"filter_debtors",
+			"clearPage",
+			"reparationId",
+			"client_data",
+			"Date",
+			"clientDetail",
+			"clientId",
 			"VehicleHistorys",
 			"_reparations",
 			"r",
@@ -602,19 +689,7 @@
 			"vision general del ",
 			"variables y constantes",
 			"categorías de variables",
-			"categorias de variables",
-			"GKJJK",
-			"OneDHeatTransferTI_FD_simple",
-			"OneDHeatTransferTI_FD_tarjan",
-			"OneDHeatTransferTI_FD_loop_tarjan",
-			"OneDHeatTransferTI_FD_loop_full",
-			"OneDHeatTransferTI_FD_loop_simple",
-			"-S run",
-			"run_",
-			"OneDHeatTransferTI_FD_loop",
-			"1600",
-			"run_1600_2000",
-			"1600"
+			"categorias de variables"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -633,7 +708,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -642,15 +717,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8574,
+						"buffer_size": 10064,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2258,
-								2258
+								8564,
+								8564
 							]
 						],
 						"settings":
@@ -660,64 +735,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 438.0,
+						"translation.y": 1236.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 1,
-					"file": "app/html/js/client_detail.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2176,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								729,
-								729
-							]
-						],
-						"settings":
-						{
-							"history_list_is_closing": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 18.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/html/js/new_reparation.js",
+					"buffer": 1,
+					"file": "app/html/js/new_appointment.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2790,
+						"buffer_size": 1919,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								537,
-								563
+								643,
+								643
 							]
 						],
 						"settings":
@@ -730,7 +768,256 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/html/js/new_reparation.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2948,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2794,
+								2794
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 394.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "app/persistance/db_schema_manager.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1412,
+								1422
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Go/Go.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 452.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/handlers/reparation.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5542,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3624,
+								3624
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Go/Go.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1839.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/handlers/client.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3760,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								191,
+								191
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Go/Go.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 255.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/models/client.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 66,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Go/Go.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/app.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								366,
+								375
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Go/Go.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/persistance/repository.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3046,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								104,
+								108
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Go/Go.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/handlers/payment.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1434,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								300,
+								306
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Go/Go.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 339.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -764,7 +1051,7 @@
 		"cols":
 		[
 			0.0,
-			0.317711997046,
+			0.452886962891,
 			1.0
 		],
 		"rows":
@@ -800,16 +1087,80 @@
 		"selected_items":
 		[
 			[
+				"modelcli",
+				"app/models/client.go"
+			],
+			[
 				"new_re",
 				"app/html/js/new_reparation.js"
 			],
 			[
-				"client.go",
-				"app/handlers/client.go"
+				"new_",
+				"app/html/js/new_appointment.js"
+			],
+			[
+				"reparation",
+				"app/html/js/reparation_detail.js"
+			],
+			[
+				"repr",
+				"app/html/js/new_reparation.js"
+			],
+			[
+				"repos",
+				"app/persistance/repository.go"
 			],
 			[
 				"client",
-				"app/html/js/client_detail.js"
+				"app/html/js/clients.js"
+			],
+			[
+				"app",
+				"app/app.go"
+			],
+			[
+				"newrepara",
+				"app/html/js/new_reparation.js"
+			],
+			[
+				"clients",
+				"app/html/js/clients.js"
+			],
+			[
+				"repara",
+				"app/html/js/reparations.js"
+			],
+			[
+				"newp",
+				"app/html/js/new_reparation.js"
+			],
+			[
+				"new_cl",
+				"app/html/js/new_client.js"
+			],
+			[
+				"clie",
+				"app/html/js/clients.js"
+			],
+			[
+				"hanpay",
+				"app/handlers/payment.go"
+			],
+			[
+				"schema",
+				"app/persistance/db_schema_manager.go"
+			],
+			[
+				"modelpay",
+				"app/models/payment.go"
+			],
+			[
+				"handlrepara",
+				"app/handlers/reparation.go"
+			],
+			[
+				"client.go",
+				"app/handlers/client.go"
 			],
 			[
 				"htmlrepra",
@@ -840,10 +1191,6 @@
 				"app/persistance/db_schema_manager.go"
 			],
 			[
-				"newrepara",
-				"app/html/js/new_reparation.js"
-			],
-			[
 				"repo",
 				"app/persistance/repository.go"
 			],
@@ -856,16 +1203,8 @@
 				"app/models/reparation.go"
 			],
 			[
-				"repara",
-				"app/handlers/reparation.go"
-			],
-			[
 				"appi",
 				"app/handlers/appointment.go"
-			],
-			[
-				"app",
-				"app/app.go"
 			],
 			[
 				"handlcli",
@@ -912,10 +1251,6 @@
 				"app/models/payment.go"
 			],
 			[
-				"reparation",
-				"app/handlers/reparation.go"
-			],
-			[
 				"handl",
 				"app/handlers/appointment.go"
 			],
@@ -926,10 +1261,6 @@
 			[
 				"clientde",
 				"app/html/js/client_detail.js"
-			],
-			[
-				"clie",
-				"app/html/js/clients.js"
 			],
 			[
 				"repor",
@@ -992,10 +1323,6 @@
 				"app/persistance/db_schema_manager.go"
 			],
 			[
-				"modelpay",
-				"app/models/payment.go"
-			],
-			[
 				"paym",
 				"app/handlers/payment.go"
 			],
@@ -1010,10 +1337,6 @@
 			[
 				"inde",
 				"app/html/index.html"
-			],
-			[
-				"new_",
-				"app/html/js/new_vehicle.js"
 			],
 			[
 				"reposi",
@@ -1152,15 +1475,15 @@
 		],
 		"width": 392.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 143.0,
+	"side_bar_visible": false,
+	"side_bar_width": 145.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

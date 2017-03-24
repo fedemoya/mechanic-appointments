@@ -58,7 +58,7 @@ func (manager *DBSchemaManager) CreateAppTables()  {
         Id integer primary key,
         VehicleId int64,
         Description string,
-        Date integer
+        Date integer,
         Price int64
     )`)
 

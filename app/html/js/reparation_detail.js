@@ -14,8 +14,7 @@ function submitPaymentForm(argument) {
     var reparationId = $('#reparation_detail').data("reparationId");
     var amount = $('#new_payment_amount').val();
     var date = new Date()
-    var seconds_date = date.getTime() / 1000
-    var data = 'ReparationId=' + reparationId + '&Amount=' + amount + '&Date=' + seconds_date;
+    var data = 'ReparationId=' + reparationId + '&Amount=' + amount + '&Date=' + getTimeInSeconds(date);
     $.ajax({
         url:'/payment',
         type:'post',

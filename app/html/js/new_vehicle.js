@@ -1,4 +1,5 @@
-$(document).on("pageshow", "#new_vehicle", function(){
+$(document).on("pageshow", "#new_vehicle", function() {
+    $('#btn_new_vehicle_submit').prop('disabled', false);
     var createdClient = $('#new_vehicle').data();
     if (!createdClient || createdClient["Id"] == 0) {
         throw new Error("Missing CreatedClient in client_detail page");
@@ -20,7 +21,8 @@ function submitVehicleForm() {
           url : '/vehicle',
           type : 'post',
           data : formData,
-          success : function(){
+          success : function() {
+              $('#btn_new_vehicle_submit').prop("disabled", true);
               $('#new_vehicle_confirm').fadeIn(1000);
               $('#new_vehicle_confirm').fadeOut(1000);
           }

@@ -1,4 +1,19 @@
+$(document).on("pagecreate", "#new_reparation", function () {
+  $('#reparation_full_payment').click(function () {
+      if ($(this).is(':checked')) {
+        $('#reparation_partial_payment').prop("disabled", "disabled");
+      } else {
+        $('#reparation_partial_payment').prop("disabled", "");
+      }
+    });
+});
+
 $(document).on("pageshow", "#new_reparation", function(){
+    
+    $('#reparation_partial_payment').prop("disabled", "");
+    $('#new_reparation_clients').empty();
+    $('#new_reparation_form')[0].reset();
+    $('#reparation_btn_submit').prop('disabled', false);
     
     $.get( "/clients", function( data ) {
           var clients = JSON.parse(data);
@@ -12,14 +27,6 @@ $(document).on("pageshow", "#new_reparation", function(){
               $('#new_reparation_clients').trigger( "updatelayout");
           });
       });
-
-    $('#reparation_full_payment').click(function () {
-      if ($(this).is(':checked')) {
-        $('#reparation_partial_payment').prop("disabled", "disabled");
-      } else {
-        $('#reparation_partial_payment').prop("disabled", "");
-      }
-    });
 });
 
 function new_reparation_loadClientVehicle(id) {
@@ -35,14 +42,9 @@ function submitReparationForm() {
   $("#new_reparation_form").submit(function(e){
       e.preventDefault();
       var date = $("#new_reparation_date").datepicker("getDate");
-      var milliseconds_time = date.getTime();
-      if (!date) {
-        throw new Error('Missing date in new_reparation_form');
-      }
-      var seconds_time = milliseconds_time / 1000; 
       var vehicleId = $("#new_reparation_vehicle").data("vehicleId");
       var formData = "VehicleId=" + vehicleId;
-      formData = formData + "&Date=" + seconds_time;
+      formData = formData + "&Date=" + getTimeInSeconds(date);
       var price = $("#new_reparation_price").val();
       formData = formData + "&Price=" + price;
       var description = $('#new_reparation_description').val()
@@ -56,21 +58,11 @@ function submitReparationForm() {
           type : 'post',
           data : formData,
           success : function(id) {
+              $('#btn_new_reparation_submit').prop('disabled', true);
               $('#new_reparation_confirm').fadeIn(1000);
               $('#new_reparation_confirm').fadeOut(1000);
-              $('#reparation_btn_submit').prop('disabled', true);
-              if (fullPayment == 0) {
-                $('#btn_load_payment').removeClass('ui-disabled');
-              }
           }
       });
       return false;
   });
 }
-
-$(document).on("pagehide", "#new_reparation", function(){
-  $('#new_reparation_clients').empty();
-  $('#new_reparation_form')[0].reset();
-  $('#reparation_btn_submit').prop('disabled', false);
-  $('#reparation_btn_submit').prop('value', "Enviar");
-});

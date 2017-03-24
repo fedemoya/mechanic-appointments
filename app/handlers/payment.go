@@ -26,7 +26,7 @@ func NewPayment(w http.ResponseWriter, r *http.Request) {
       return
   }
 
-  parsedDate, err := strconv.ParseInt(amount, 10, 64)
+  parsedDate, err := strconv.ParseInt(date, 10, 64)
   if err != nil {
       log.Println(err)
       http.Error(w, err.Error(), 500)

@@ -1,20 +1,22 @@
-$(document).on("pageshow", "#clients", function(){
-  
-  loadClients(false);
-
+$(document).on("pagecreate", "#clients", function () {
   $('#filter_debtors').click(function () {
-      $('#clients_table tbody').empty();
-      if ($(this).is(':checked')) {
-        loadClients(true);
-      } else {
-        loadClients(false);
-      }
+      loadClients();
   });
+});
 
-})
+$(document).on("pageshow", "#clients", function() {
 
-function loadClients(filterDebtors) {
-  var route = filterDebtors ? "/clients/debtors" : "/clients"
+  $('#clients_table tbody').empty();
+
+  loadClients();
+});
+
+function loadClients() {
+  $('#clients_table tbody').empty();
+  var route = "/clients";
+  if ($('#filter_debtors').is(':checked')) {
+    route = route + "/debtors";
+  }
   $.get(route, function( data ) {
       var clients = JSON.parse(data);
       clients.forEach(function(client) {
@@ -30,7 +32,3 @@ function loadClients(filterDebtors) {
 function setClientDetailData(clientId) {
   $('#client_detail').data("clientId", clientId);
 }
-
-$(document).on("pagehide", "#clients", function(){
-  $('#clients_table tbody').empty();
-})
