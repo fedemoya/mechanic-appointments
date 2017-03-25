@@ -32,13 +32,11 @@ function loadReparationData(id) {
       
         var reparationDetail = JSON.parse(data);
 
-        var milliseconds_date = reparationDetail.Date * 1000;
-        var d =  new Date(milliseconds_date);
-        var string_date = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
+        var stringDate = epochToString(reparationDetail.Date);        
             
         $('#reparation_data').append(
         '<p><strong>Fecha: ' + 
-        string_date +
+        stringDate +
         '</strong></p>' +
         '<p><strong>Descripci&oacute;n: ' + 
         reparationDetail.Description +
@@ -49,14 +47,12 @@ function loadReparationData(id) {
         );
 
         reparationDetail.Payments.forEach(function (payment) {
-        var milliseconds_date = payment['Date'] * 1000;
-        var d =  new Date(milliseconds_date);
-        var string_date = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
-          $('#payments_table tbody').append(
-              '<tr><td>' + string_date +
+            var stringDate = epochToString(payment['Date']);
+            $('#payments_table tbody').append(
+              '<tr><td>' + stringDate +
               '</td><td>' + payment['Amount'] +
               '</td></tr>'
-          );
+            );
         });
 
     });

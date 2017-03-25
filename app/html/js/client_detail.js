@@ -45,11 +45,9 @@ $(document).on("pageshow", "#client_detail", function(){
             $('#vehicles_history').append(html).enhanceWithin();
             
             vehicleHistory.Reparations.forEach(function function_name(reparation) {
-              var milliseconds_date = reparation['Date'] * 1000;
-              var d =  new Date(milliseconds_date);
-              var string_date = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
+              var stringDate = epochToString(reparation['Date']);
               $('#vehicle_' + i + '_history tbody').append(
-                '<tr><td>' + string_date + '</td><td>' + reparation['Price'] + '</td></tr>'
+                '<tr><td>' + stringDate + '</td><td>' + reparation['Price'] + '</td></tr>'
               );
             });
         });
