@@ -1,7 +1,7 @@
 $(document).on("pageshow", "#client_detail", function(){
     
     $('#client_data').empty();
-    $('#client_vehicles_table tbody').empty();
+    $('#vehicles_history').empty();
 
     var clientId = $('#client_detail').data("clientId");
     
@@ -35,6 +35,7 @@ $(document).on("pageshow", "#client_detail", function(){
               ' <tr class="ui-bar-d">' +
               '   <th>Fecha</th>' +
               '   <th>Precio</th>' +
+              '   <th>Descripci&oacute;n</th>' +
               ' </tr>' +
               '</thead>' +
               '<tbody>' +
@@ -47,7 +48,7 @@ $(document).on("pageshow", "#client_detail", function(){
             vehicleHistory.Reparations.forEach(function function_name(reparation) {
               var stringDate = epochToString(reparation['Date']);
               $('#vehicle_' + i + '_history tbody').append(
-                '<tr><td>' + stringDate + '</td><td>' + reparation['Price'] + '</td></tr>'
+                '<tr><td>' + stringDate + '</td><td>' + reparation['Price'] + '</td><td>' + reparation['Description'] + '</td></tr>'
               );
             });
         });
