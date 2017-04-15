@@ -1,34 +1,34 @@
-package models
+package handlers
 
 import (
     "testing"
-    "mechanics-backend/app/params_validate"
+    "mechanics-backend/app/handlers"
 )
 
 func TestRequiredName(t *testing.T) {
     var name string
     var err error
-    name, err = params_validate.Validate("Jose Mercado").Required().AsName()
+    name, err = handlers.Validate("Jose Mercado").Required().AsName()
     if err != nil {
         t.Error(err)
     }
     if name != "Jose Mercado" {
         t.Error("Incorrect name returned")
     }
-    _, err = params_validate.Validate("").Required().AsName()
-    if err.Error() != "The parameter cannot be null." {
+    _, err = handlers.Validate("").Required().AsName()
+    if err.Error() != "El parametro no puede ser nulo." {
         t.Error("Wrong error returned")
     }
 }
 
 func TestOptionalName(t *testing.T) {
     var err error
-    _, err = params_validate.Validate("").AsName()
+    _, err = handlers.Validate("").AsName()
     if err != nil {
         t.Error(err)
     }
     var name string
-    name, err = params_validate.Validate("Antonio Moya").AsName()
+    name, err = handlers.Validate("Antonio Moya").AsName()
     if err != nil {
         t.Error(err)
     }
@@ -39,11 +39,11 @@ func TestOptionalName(t *testing.T) {
 
 func TestBadName(t *testing.T) {
     var err error
-    _, err = params_validate.Validate("Antonio 1234 Moya").AsName()
+    _, err = handlers.Validate("Antonio 1234 Moya").AsName()
     if err == nil {
         t.Error("Validation failed")
     }
-    if err.Error() != "Invalid Name." {
+    if err.Error() != "Nombre invalido." {
         t.Error("Wrong error")
     }
 }
@@ -51,7 +51,7 @@ func TestBadName(t *testing.T) {
 func TestRequiredPrice(t *testing.T) {
     var price float64
     var err error
-    price, err = params_validate.Validate("100").Required().AsPrice()
+    price, err = handlers.Validate("100").Required().AsPrice()
     if err != nil {
         t.Error(err)
     }

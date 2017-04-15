@@ -156,6 +156,18 @@ func ReparationDetail(w http.ResponseWriter, r *http.Request) {
 }
 
 func ReparationList(w http.ResponseWriter, r *http.Request) {
+
+    value := r.Context().Value("user_id")
+
+    if value == nil {
+      errStr := "Missing user_id"
+      log.Println(errStr)
+      http.Error(w, errStr, http.StatusInternalServerError)
+      return
+    }
+
+    userId := value.(int64) 
+
     var vars map[string]string = mux.Vars(r)
     date := vars["date"]
 
@@ -179,8 +191,11 @@ func ReparationList(w http.ResponseWriter, r *http.Request) {
     repository := persistance.NewRepository("mechanics.db")
 
     reparations := []models.Reparation{}
-    
-    err = repository.Search(&models.Reparation{}, &reparations, "date(Date, 'unixepoch')=date(?, 'unixepoch')", parsedDate)
+
+    query := "SELECT reparation.* FROM client, vehicle, reparation "
+    query = query + "WHERE client.UserId = ? AND client.Id=vehicle.ClientId "
+    query = query + "AND vehicle.Id=reparation.VehicleId AND date(reparation.Date, 'unixepoch')=date(?, 'unixepoch')"
+    err = repository.DB.Select(&reparations, query, userId, parsedDate)
 
     if err != nil {
       log.Println(err)

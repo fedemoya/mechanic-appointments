@@ -21,9 +21,21 @@ func NewDBSchemaManager (dbName string) *DBSchemaManager  {
 
 func (manager *DBSchemaManager) CreateAppTables()  {
 
-    _, err := manager.db.Exec(`CREATE TABLE Client (
+    _, err := manager.db.Exec(`CREATE TABLE User (
         Id integer primary key,
-        Name text
+        Name text,
+        Login text,
+        Password text
+    )`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`CREATE TABLE Client (
+        Id integer primary key,
+        Name text,
+        UserId integer
     )`)
 
     if err != nil {

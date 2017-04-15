@@ -108,6 +108,18 @@ func AppointmentDetail(w http.ResponseWriter, r *http.Request) {
 }
 
 func AppointmentList(w http.ResponseWriter, r *http.Request) {
+
+    value := r.Context().Value("user_id")
+
+    if value == nil {
+      errStr := "Missing user_id"
+      log.Println(errStr)
+      http.Error(w, errStr, http.StatusInternalServerError)
+      return
+    }
+
+    userId := value.(int64)
+
     var vars map[string]string = mux.Vars(r)
     date := vars["date"]
 
@@ -129,12 +141,14 @@ func AppointmentList(w http.ResponseWriter, r *http.Request) {
 
     appointments := []models.Appointment{}
     
-    if parsedDate > 0 {
-        err = repository.Search(&models.Appointment{}, &appointments, "date(Date, 'unixepoch')=date(?, 'unixepoch')", parsedDate)      
-    } else {
-        now := time.Now().Unix()
-        err = repository.Search(&models.Appointment{}, &appointments, "date(Date, 'unixepoch')=date(?, 'unixepoch')", now)
+    if parsedDate == 0 {
+        parsedDate = time.Now().Unix()
     }
+
+    query := "SELECT appointment.* FROM client, vehicle, appointment "
+    query = query + "WHERE client.UserId = ? AND client.Id=vehicle.ClientId "
+    query = query + "AND vehicle.Id=appointment.VehicleId AND date(appointment.Date, 'unixepoch')=date(?, 'unixepoch')"
+    err = repository.DB.Select(&appointments, query, userId, parsedDate)
 
     if err != nil {
       log.Println(err)

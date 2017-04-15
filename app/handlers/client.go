@@ -12,13 +12,24 @@ import(
 
 func NewClient(w http.ResponseWriter, r *http.Request) {
 
+  value := r.Context().Value("user_id")
+
+  if value == nil {
+    errStr := "Missing user_id"
+    log.Println(errStr)
+    http.Error(w, errStr, http.StatusInternalServerError)
+    return
+  }
+
+  userId := value.(int64)
+
   name := r.FormValue("Name")
 
   log.Println("Received the following Name: " + name)
 
   repository := persistance.NewRepository("mechanics.db")
 
-  client := &models.Client{Name: name}
+  client := &models.Client{Name: name, UserId: userId}
 
   id, err := repository.Save(client)
   if err != nil {
@@ -104,10 +115,21 @@ func ClientDetail(w http.ResponseWriter, r *http.Request) {
 
 func ClientList(w http.ResponseWriter, r *http.Request) {
 
+    value := r.Context().Value("user_id")
+
+    if value == nil {
+      errStr := "Missing user_id"
+      log.Println(errStr)
+      http.Error(w, errStr, http.StatusInternalServerError)
+      return
+    }
+
+    userId := value.(int64)
+
     repository := persistance.NewRepository("mechanics.db")
 
     clients := []models.Client{}
-    err := repository.Search(&models.Client{}, &clients, "")
+    err := repository.Search(&models.Client{}, &clients, "UserId=?", userId)
 
   if err != nil {
       log.Println(err)
@@ -127,16 +149,27 @@ func ClientList(w http.ResponseWriter, r *http.Request) {
 
 func DebtorList(w http.ResponseWriter, r *http.Request) {
 
+    value := r.Context().Value("user_id")
+
+    if value == nil {
+      errStr := "Missing user_id"
+      log.Println(errStr)
+      http.Error(w, errStr, http.StatusInternalServerError)
+      return
+    }
+
+    userId := value.(int64)
+
     repository := persistance.NewRepository("mechanics.db")
 
     clients := []models.Client{}
     query := "SELECT client.* FROM client, vehicle, reparation, payment "
-    query = query + "WHERE client.Id=vehicle.ClientId "
+    query = query + "WHERE client.UserId = ? AND client.Id=vehicle.ClientId "
     query = query + "AND vehicle.Id=reparation.VehicleId "
     query = query + "AND reparation.Id=payment.ReparationId "
     query = query + "GROUP BY client.Id, reparation.Id "
     query = query + "HAVING reparation.Price > SUM(payment.Amount)"
-    err := repository.DB.Select(&clients, query)
+    err := repository.DB.Select(&clients, query, userId)
 
     if err != nil {
         log.Println(err)
