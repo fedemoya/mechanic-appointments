@@ -5,14 +5,26 @@ import (
     _ "github.com/mattn/go-sqlite3"
     "database/sql"
     "log"
+    "mechanics-backend/app/config"
 )
 
 type DBSchemaManager struct {
     db *sql.DB
 }
 
-func NewDBSchemaManager (dbName string) *DBSchemaManager  {
-    db, err := sql.Open("sqlite3", "/data/" + dbName)
+func NewDBSchemaManager () *DBSchemaManager  {
+
+    driverName, err := config.Get("DRIVER_NAME")
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    dataSourceName, err := config.Get("DATA_SOURCE_NAME")
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    db, err := sql.Open(driverName, dataSourceName)
     if err != nil {
         log.Fatalln(err)
     }
@@ -93,7 +105,13 @@ func (manager *DBSchemaManager) CreateAppTables()  {
 
 func (manager *DBSchemaManager) DropAppTables()  {
 
-    _, err := manager.db.Exec(`DROP TABLE IF EXISTS Client`)
+    _, err := manager.db.Exec(`DROP TABLE IF EXISTS User`)
+
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    _, err = manager.db.Exec(`DROP TABLE IF EXISTS Client`)
 
     if err != nil {
         log.Fatalln(err)

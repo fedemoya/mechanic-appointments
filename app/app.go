@@ -1,6 +1,7 @@
 package main
 
 import(
+    "os"
     "log"
     "time"
     // "regexp"
@@ -8,16 +9,20 @@ import(
     "github.com/gorilla/mux"
     "mechanics-backend/app/handlers"
     // "mechanics-backend/app/persistance"
+    "mechanics-backend/app/config"
 )
 
 func main() {
 
-    init_db()
+    init_configs()
 
     r := mux.NewRouter()
 
-    r.PathPrefix("/static/login/").Handler(http.StripPrefix("/static/login/", http.FileServer(http.Dir("html/login"))))
-    r.PathPrefix("/static/pages/").Handler(http.StripPrefix("/static/pages/", http.FileServer(http.Dir("html/pages"))))
+    gopath := os.Getenv("GOPATH")
+    projectDir := gopath + "/src/mechanics-backend/app/"
+
+    r.PathPrefix("/static/login/").Handler(http.StripPrefix("/static/login/", http.FileServer(http.Dir(projectDir + "html/login"))))
+    r.PathPrefix("/static/pages/").Handler(http.StripPrefix("/static/pages/", http.FileServer(http.Dir(projectDir + "html/pages"))))
 
     r.HandleFunc("/login", handlers.Login).Methods("POST")
 
@@ -55,8 +60,20 @@ func main() {
     log.Fatal(srv.ListenAndServe())
 }
 
-func init_db()  {
-    // manager := persistance.NewDBSchemaManager("mechanics.db")
+// TODO: Remove from here and put in a script
+// func init_db()  {
+    // dataSourceName := config.Get("DATA_SOURCE_NAME")
+    // manager := persistance.NewDBSchemaManager(dataSourceName)
     // manager.DropAppTables()
     // manager.CreateAppTables()
+// }
+
+func init_configs() {
+    
+    // Set the default values for the configs
+
+    os.Setenv("DRIVER_NAME", "sqlite3")
+    os.Setenv("DATA_SOURCE_NAME", "/data/mechanics.db")
+
+    config.Init()
 }

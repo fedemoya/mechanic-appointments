@@ -40,7 +40,7 @@ func NewPayment(w http.ResponseWriter, r *http.Request) {
       return
   }
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
 
   payment := &models.Payment{ReparationId: parsedReparationId, Date: parsedDate, Amount: parsedAmount}
 

@@ -6,11 +6,16 @@ import (
     "time"
     "mechanics-backend/app/persistance"
     "mechanics-backend/app/models"
+    "mechanics-backend/app/config"
 )
 
 func TestSaveRetrieveClient(t *testing.T) {
+    
     var client *models.Client = &models.Client{Name: "Federico"}
-    repository := persistance.NewRepository("mechanics_test.db")
+    
+    
+    repository := persistance.NewRepository()
+    
     id, err := repository.Save(client)
 
     if err != nil {
@@ -34,9 +39,12 @@ func TestSaveRetrieveClient(t *testing.T) {
 }
 
 func TestSaveRetrieveAppointment(t *testing.T) {
+    
     var appointmentDate time.Time = time.Date(2017, time.May, 24, 7, 0, 0, 0, time.UTC)
-    var appointment *models.Appointment = &models.Appointment{ClientId: 1, VehicleId: 1, Date: appointmentDate.Unix()}
-    repository := persistance.NewRepository("mechanics_test.db")
+    var appointment *models.Appointment = &models.Appointment{VehicleId: 1, Date: appointmentDate.Unix()}
+    
+    repository := persistance.NewRepository()
+    
     id, err := repository.Save(appointment)
 
     if err != nil {
@@ -53,15 +61,19 @@ func TestSaveRetrieveAppointment(t *testing.T) {
     if err != nil {
         t.Error(err)
     }
-
-    if appointmentAgain.ClientId != 1 {
+    
+    if appointmentAgain.VehicleId != 1 {
         t.Error("Problem occur retrieving Appointment object")
     }
+
 }
 
 func TestSaveRetrieveReparation(t *testing.T) {
+    
     var reparation *models.Reparation = &models.Reparation{VehicleId: 1, Description: "Cambio de aceite y filtros."}
-    repository := persistance.NewRepository("mechanics_test.db")
+    
+    repository := persistance.NewRepository()
+    
     id, err := repository.Save(reparation)
 
     if err != nil {
@@ -85,6 +97,7 @@ func TestSaveRetrieveReparation(t *testing.T) {
 }
 
 func TestSaveRetrieveVehicle(t *testing.T) {
+    
     var vehicle *models.Vehicle = &models.Vehicle{
         ClientId: 1,
         PlateNumber: "IYN751",
@@ -93,7 +106,9 @@ func TestSaveRetrieveVehicle(t *testing.T) {
         Model: "C4",
         Year: 2010,
     }
-    repository := persistance.NewRepository("mechanics_test.db")
+    
+    repository := persistance.NewRepository()
+    
     id, err := repository.Save(vehicle)
 
     if err != nil {
@@ -119,7 +134,9 @@ func TestSaveRetrieveVehicle(t *testing.T) {
 func TestVehicleRelations(t *testing.T)  {
 
     var client *models.Client = &models.Client{Name: "Federico"}
-    repository := persistance.NewRepository("mechanics_test.db")
+    
+    repository := persistance.NewRepository()
+    
     id, err := repository.Save(client)
 
     if err != nil {
@@ -164,7 +181,13 @@ func TestVehicleRelations(t *testing.T)  {
 }
 
 func TestMain(m *testing.M) {
-    manager := persistance.NewDBSchemaManager("mechanics_test.db")
+    
+    os.Setenv("DRIVER_NAME", "sqlite3")
+    os.Setenv("DATA_SOURCE_NAME", "/data/mechanics_test.db")
+
+    config.Init()
+
+    manager := persistance.NewDBSchemaManager()
     manager.DropAppTables()
     manager.CreateAppTables()
     ret := m.Run()

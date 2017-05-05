@@ -25,7 +25,7 @@ func NewVehicle(w http.ResponseWriter, r *http.Request) {
   log.Println("Received the following Model: " + model)
   log.Println("Received the following Year: " + year)
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
 
   parsedClientId, err := strconv.ParseInt(clientId, 10, 64)
   if err != nil {
@@ -89,7 +89,7 @@ func NewVehicle(w http.ResponseWriter, r *http.Request) {
 //
 // func ClientList(w http.ResponseWriter, r *http.Request) {
 //
-//     repository := persistance.NewRepository("mechanics.db")
+//     repository := persistance.NewRepository()
 //
 //     clients := []models.Client{}
 //     err := repository.Search(&models.Client{}, &clients)

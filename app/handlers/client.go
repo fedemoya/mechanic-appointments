@@ -27,7 +27,7 @@ func NewClient(w http.ResponseWriter, r *http.Request) {
 
   log.Println("Received the following Name: " + name)
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
 
   client := &models.Client{Name: name, UserId: userId}
 
@@ -52,7 +52,7 @@ func ClientDetail(w http.ResponseWriter, r *http.Request) {
   var vars map[string]string = mux.Vars(r)
   id := vars["id"]
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
 
   client := &models.Client{}
 
@@ -126,7 +126,7 @@ func ClientList(w http.ResponseWriter, r *http.Request) {
 
     userId := value.(int64)
 
-    repository := persistance.NewRepository("mechanics.db")
+    repository := persistance.NewRepository()
 
     clients := []models.Client{}
     err := repository.Search(&models.Client{}, &clients, "UserId=?", userId)
@@ -160,7 +160,7 @@ func DebtorList(w http.ResponseWriter, r *http.Request) {
 
     userId := value.(int64)
 
-    repository := persistance.NewRepository("mechanics.db")
+    repository := persistance.NewRepository()
 
     clients := []models.Client{}
     query := "SELECT client.* FROM client, vehicle, reparation, payment "

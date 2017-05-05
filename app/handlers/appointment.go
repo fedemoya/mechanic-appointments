@@ -33,7 +33,7 @@ func NewAppointment(w http.ResponseWriter, r *http.Request) {
       return
   }
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
   appointment := &models.Appointment{VehicleId: parsedVehicleId, Date: parsedDate}
 
   id, err := repository.Save(appointment)
@@ -57,7 +57,7 @@ func AppointmentDetail(w http.ResponseWriter, r *http.Request) {
   var vars map[string]string = mux.Vars(r)
   id := vars["id"]
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
 
   appointment := &models.Appointment{}
 
@@ -137,7 +137,7 @@ func AppointmentList(w http.ResponseWriter, r *http.Request) {
         }
     }
 
-    repository := persistance.NewRepository("mechanics.db")
+    repository := persistance.NewRepository()
 
     appointments := []models.Appointment{}
     

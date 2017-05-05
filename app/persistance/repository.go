@@ -7,20 +7,34 @@ import (
     "database/sql"
     "log"
     "reflect"
+    "mechanics-backend/app/config"
 )
 
 type Repository struct {
     DB *sqlx.DB
 }
 
-func NewRepository (dbName string) *Repository  {
+func NewRepository () *Repository  {
+    
     sqlx.NameMapper = func(s string) string { return s }
-    // this Pings the database trying to connect, panics on error
-    // use sqlx.Open() for sql.Open() semantics
-    db, err := sqlx.Connect("sqlite3", "/data/" + dbName)
+
+    driverName, err := config.Get("DRIVER_NAME")
     if err != nil {
         log.Fatalln(err)
     }
+
+    dataSourceName, err := config.Get("DATA_SOURCE_NAME")
+    if err != nil {
+        log.Fatalln(err)
+    }
+
+    // this Pings the database trying to connect, panics on error
+    // use sqlx.Open() for sql.Open() semantics
+    db, err := sqlx.Connect(driverName, dataSourceName)
+    if err != nil {
+        log.Fatalln(err)
+    }
+    
     return &Repository{DB: db}
 }
 

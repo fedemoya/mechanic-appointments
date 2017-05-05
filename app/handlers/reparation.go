@@ -67,7 +67,7 @@ func NewReparation(w http.ResponseWriter, r *http.Request) {
   // TODO: We need a transaction here in order to make
   // these two insertions atomic
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
   reparation := &models.Reparation{VehicleId: parsedVehicleId, Date: parsedDate, Description: description, Price: parsedPrice}
 
   reparation_id, err := repository.Save(reparation)
@@ -107,7 +107,7 @@ func ReparationDetail(w http.ResponseWriter, r *http.Request) {
   var vars map[string]string = mux.Vars(r)
   id := vars["id"]
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
 
   reparation := &models.Reparation{}
 
@@ -188,7 +188,7 @@ func ReparationList(w http.ResponseWriter, r *http.Request) {
       return
     }
 
-    repository := persistance.NewRepository("mechanics.db")
+    repository := persistance.NewRepository()
 
     reparations := []models.Reparation{}
 

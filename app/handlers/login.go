@@ -28,7 +28,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
       return
   }
 
-  repository := persistance.NewRepository("mechanics.db")
+  repository := persistance.NewRepository()
 
   users := []models.User{}
   err = repository.Search(&models.User{}, &users, "Login = ?", login)
