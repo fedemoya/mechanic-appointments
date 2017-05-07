@@ -26,4 +26,6 @@ RUN pip install -U pip setuptools
 
 RUN easy_install supervisor
 
+ENV APPLOGPATH="/var/log/"
+
 WORKDIR $GOPATH
