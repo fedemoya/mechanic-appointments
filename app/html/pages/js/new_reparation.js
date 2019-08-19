@@ -39,30 +39,26 @@ function new_reparation_loadClientVehicle(id) {
 }
 
 function submitReparationForm() {
-  $("#new_reparation_form").submit(function(e){
-      e.preventDefault();
-      var date = $("#new_reparation_date").datepicker("getDate");
-      var vehicleId = $("#new_reparation_vehicle").data("vehicleId");
-      var formData = "VehicleId=" + vehicleId;
-      formData = formData + "&Date=" + getTimeInSeconds(date);
-      var price = $("#new_reparation_price").val();
-      formData = formData + "&Price=" + price;
-      var description = $('#new_reparation_description').val()
-      formData = formData + "&Description=" + description;
-      var fullPayment = $('#reparation_full_payment').is(':checked') ? 1 : 0;
-      formData = formData + "&FullPayment=" + fullPayment
-      var partialPayment = $("#reparation_partial_payment").val();
-      formData = formData + "&PartialPayment=" + partialPayment;
-      $.ajax({
-          url : '/reparation',
-          type : 'post',
-          data : formData,
-          success : function(id) {
-              $('#btn_new_reparation_submit').prop('disabled', true);
-              $('#new_reparation_confirm').fadeIn(1000);
-              $('#new_reparation_confirm').fadeOut(1000);
-          }
-      });
-      return false;
+  var date = $("#new_reparation_date").datepicker("getDate");
+  var vehicleId = $("#new_reparation_vehicle").data("vehicleId");
+  var formData = "VehicleId=" + vehicleId;
+  formData = formData + "&Date=" + getTimeInSeconds(date);
+  var price = $("#new_reparation_price").val();
+  formData = formData + "&Price=" + price;
+  var description = $('#new_reparation_description').val()
+  formData = formData + "&Description=" + description;
+  var fullPayment = $('#reparation_full_payment').is(':checked') ? 1 : 0;
+  formData = formData + "&FullPayment=" + fullPayment
+  var partialPayment = $("#reparation_partial_payment").val();
+  formData = formData + "&PartialPayment=" + partialPayment;
+  $.ajax({
+      url : '/reparation',
+      type : 'post',
+      data : formData,
+      success : function(id) {
+          $('#btn_new_reparation_submit').prop('disabled', true);
+          $('#new_reparation_confirm').fadeIn(1000);
+          $('#new_reparation_confirm').fadeOut(1000);
+      }
   });
 }

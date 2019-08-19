@@ -18,14 +18,6 @@ RUN go get github.com/gorilla/mux
 
 RUN go get github.com/gorilla/sessions
 
-RUN apt-get install python
-
-RUN apt-get install -y python-pip
-
-RUN pip install -U pip setuptools
-
-RUN easy_install supervisor
-
 ENV APPLOGPATH="/var/log/"
 
 WORKDIR $GOPATH

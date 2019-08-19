@@ -5,24 +5,20 @@ $(document).on('pageshow', '#new_client', function () {
 var CreatedClient = {"Name": "", "Id": 0};
 
 function submitClientForm() {
-  $("#new_client_form").submit(function(e){
-      e.preventDefault();
-      var formData = $('#new_client_form').serialize();
-      CreatedClient["Name"] = $('#new_client_name').val();
-      $.ajax({
-          url:'/client',
-          type:'post',
-          data: formData,
-          success: function(clientId) {
-              CreatedClient["Id"] = clientId;
-              $('#btn_new_client_submit').prop("disabled", true);
-              $('#new_client_confirm').fadeIn(1000);
-              $('#new_client_confirm').fadeOut(1000, function () {
-                $('#btn_load_vehicle').show();
-              });
-          }
-      });
-      return false;
+  var formData = $('#new_client_form').serialize();
+  CreatedClient["Name"] = $('#new_client_name').val();
+  $.ajax({
+      url:'/client',
+      type:'post',
+      data: formData,
+      success: function(clientId) {
+          CreatedClient["Id"] = clientId;
+          $('#btn_new_client_submit').prop("disabled", true);
+          $('#new_client_confirm').fadeIn(1000);
+          $('#new_client_confirm').fadeOut(1000, function () {
+            $('#btn_load_vehicle').show();
+          });
+      }
   });
 }
 

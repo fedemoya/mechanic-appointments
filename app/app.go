@@ -4,11 +4,9 @@ import(
     "os"
     "log"
     "time"
-    // "regexp"
     "net/http"
     "github.com/gorilla/mux"
     "mechanics-backend/app/handlers"
-    // "mechanics-backend/app/persistance"
     "mechanics-backend/app/config"
 )
 
@@ -51,7 +49,7 @@ func main() {
 
     srv := &http.Server{
         Handler:      h,
-        Addr:         "127.0.0.1:3000",
+        Addr:         "0.0.0.0:3000",
         // Good practice: enforce timeouts for servers you create!
         WriteTimeout: 15 * time.Second,
         ReadTimeout:  15 * time.Second,
@@ -60,20 +58,10 @@ func main() {
     log.Fatal(srv.ListenAndServe())
 }
 
-// TODO: Remove from here and put in a script
-// func init_db()  {
-    // dataSourceName := config.Get("DATA_SOURCE_NAME")
-    // manager := persistance.NewDBSchemaManager(dataSourceName)
-    // manager.DropAppTables()
-    // manager.CreateAppTables()
-// }
-
 func init_configs() {
     
-    // Set the default values for the configs
-
-    // os.Setenv("DRIVER_NAME", "sqlite3")
-    // os.Setenv("DATA_SOURCE_NAME", "/data/mechanics.db")
+    os.Setenv("DRIVER_NAME", "sqlite3")
+    os.Setenv("DATA_SOURCE_NAME", "/data/mechanics.db")
 
     config.Init()
 }

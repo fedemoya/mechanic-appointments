@@ -24,7 +24,6 @@ function submitPaymentForm(argument) {
             loadReparationData(reparationId);
         }
     });
-    return false;
 }
 
 function loadReparationData(id) {
