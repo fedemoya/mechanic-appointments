@@ -1,3 +1,5 @@
 *.DS_Store
 mechanics-backend.sublime-project
 mechanics-backend.sublime-workspace
+data
+.idea

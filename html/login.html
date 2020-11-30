@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script><script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+
+  function submitLoginForm() {
+    $("#login_form").submit(function(e){
+        e.preventDefault();
+        var formData = $('#login_form').serialize();
+        $.ajax({
+            url:'/api/login',
+            type:'post',
+            data: formData,
+            success: function() {
+                document.location.href = '/';
+            },
+            error : function () {
+              $('#login_error').fadeIn(1000);
+              $('#login_error').fadeOut(4000);
+            }
+        });
+        return false;
+    });
+  }
+  $(document).on("pagehide", "#login", function(){
+    $('#login_form')[0].reset();
+  })
+
+</script>
+</head>
+<body>
+
+<div data-role="page" id="login">
+  
+  <div data-role="header">
+    <h1>Iniciar Sesi&oacute;n</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+    <form action="javascript:submitLoginForm()" id="login_form">
+      Usuario<br>
+      <input type="text" name="Login" id="login_login"><br>
+      Contrase&ntilde;a<br>
+      <input type="password" name="Password" id="login_password"><br>
+      <input class="submit" type="submit" value="Enviar" id="btn_login_submit">
+    </form>
+
+    <div id="login_error" align="center" style="display:none;background-color:red;">
+        <p><strong>Usuario o Contrase&ntilde;a incorrecto</strong></p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
