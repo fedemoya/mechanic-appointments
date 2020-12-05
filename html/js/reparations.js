@@ -12,24 +12,25 @@ $(document).on("pageshow", "#reparations", function() {
   $('#reparations_table tbody').empty();
   $('#reparations_date').val("");
 
-  loadReparations(getCurrentTimeInSeconds());
+  loadReparations();
 });
 
-function loadReparations(date) {
-  $.get( "/api/reparations/" + date, function( data ) {
+function loadReparations(date = '') {
+  var path = "/api/reparations"
+  if(date != '') {
+      path = path + "/" + date
+  }
+  $.get(path, function( data ) {
       var reparations = JSON.parse(data);
       reparations.forEach(function(reparation) {
-        console.log('<tr><td><a href="#reparation_detail" onclick="setReparationDetailData(' +
-              + reparation.Id + ')">' + reparation['ClientName'] +
-              '</a></td><td>' + reparation['VehicleDescription'] +
-              '</td><td>' + reparation['Price'] +
-              '</td><td>' + reparation['Description'] + '</td></tr>');
+          var date = new Date(reparation['Date'] * 1000)
           $('#reparations_table tbody').append(
               '<tr><td><a href="#reparation_detail" onclick="setReparationDetailData(' +
               + reparation.Id + ')">' + reparation['ClientName'] +
               '</a></td><td>' + reparation['VehicleDescription'] +
               '</td><td>' + reparation['Price'] +
-              '</td><td>' + reparation['Description'] + '</td></tr>'
+              '</td><td>' + reparation['Description'] +
+              '</td><td>' + date.toLocaleDateString('es-AR') + '</td></tr>'
           );
       });
   });

@@ -183,9 +183,6 @@ func ReparationList(w http.ResponseWriter, r *http.Request) {
             http.Error(w, err.Error(), 500)
             return
         }
-    } else {
-      http.Error(w, "Missing date parameter.", 500)
-      return
     }
 
     repository := persistance.NewRepository()
@@ -193,9 +190,17 @@ func ReparationList(w http.ResponseWriter, r *http.Request) {
     reparations := []models.Reparation{}
 
     query := "SELECT reparation.* FROM client, vehicle, reparation "
-    query = query + "WHERE client.UserId = ? AND client.Id=vehicle.ClientId "
-    query = query + "AND vehicle.Id=reparation.VehicleId AND date(reparation.Date, 'unixepoch')=date(?, 'unixepoch')"
-    err = repository.DB.Select(&reparations, query, userId, parsedDate)
+    query = query + "WHERE client.UserId = ? AND client.Id=vehicle.ClientId AND vehicle.Id=reparation.VehicleId"
+
+    if parsedDate == 0 {
+        query = query + " ORDER BY reparation.Date DESC"
+        err = repository.DB.Select(&reparations, query, userId)
+    } else {
+        query = query + " AND date(reparation.Date, 'unixepoch')=date(?, 'unixepoch')"
+        query = query + " ORDER BY reparation.Date DESC"
+        err = repository.DB.Select(&reparations, query, userId, parsedDate)
+    }
+
 
     if err != nil {
       log.Println(err)

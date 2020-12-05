@@ -1,14 +1,14 @@
 package handlers
 
-import(
-    "strconv"
-    "log"
-    "time"
-    "net/http"
+import (
     "encoding/json"
     "github.com/gorilla/mux"
-    "mechanics-backend/persistance"
+    "log"
     "mechanics-backend/models"
+    "mechanics-backend/persistance"
+    "net/http"
+    "strconv"
+    "time"
 )
 
 func NewAppointment(w http.ResponseWriter, r *http.Request) {
@@ -140,14 +140,18 @@ func AppointmentList(w http.ResponseWriter, r *http.Request) {
     repository := persistance.NewRepository()
 
     appointments := []models.Appointment{}
-    
-    if parsedDate == 0 {
-        parsedDate = time.Now().Unix()
-    }
 
     query := "SELECT appointment.* FROM client, vehicle, appointment "
-    query = query + "WHERE client.UserId = ? AND client.Id=vehicle.ClientId "
-    query = query + "AND vehicle.Id=appointment.VehicleId AND date(appointment.Date, 'unixepoch')=date(?, 'unixepoch')"
+    query = query + "WHERE client.UserId = ? AND client.Id=vehicle.ClientId AND vehicle.Id=appointment.VehicleId AND"
+
+    if parsedDate == 0 {
+        parsedDate = time.Now().Unix()
+        query = query + " date(appointment.Date, 'unixepoch')>=date(?, 'unixepoch')"
+    } else {
+        query = query + " date(appointment.Date, 'unixepoch')=date(?, 'unixepoch')"
+    }
+
+    query = query + " ORDER BY appointment.Date ASC"
     err = repository.DB.Select(&appointments, query, userId, parsedDate)
 
     if err != nil {
