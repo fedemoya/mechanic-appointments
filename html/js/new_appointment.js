@@ -9,7 +9,7 @@ $(document).on("pageshow", "#new_appointment", function() {
                 '</a></li>'
             );
             $('#new_appointment_clients').listview( "refresh" );
-              $('#new_appointment_clients').trigger( "updatelayout");
+            $('#new_appointment_clients').trigger( "updatelayout");
         });
     }); 
 });
@@ -24,10 +24,10 @@ function new_appointment_loadClientVehicle(id) {
 }
 
 function submitAppointmentForm() {
-  var date = $("#new_appointment_date").datepicker("getDate");
+  var date = $("#new_appointment_date").val()
   var vehicleId = $("#new_appointment_vehicle").data("vehicleId");
   var formData = "VehicleId=" + vehicleId;
-  formData = formData + "&Date=" + getTimeInSeconds(date);
+  formData = formData + "&Date=" + getTimeInSeconds(new Date(date));
   $.ajax({
       url : '/api/appointment',
       type : 'post',
@@ -36,6 +36,11 @@ function submitAppointmentForm() {
           $('btn_new_appointment_submit').prop("disabled", true);
           $('#new_appointment_confirm').fadeIn(1000);
           $('#new_appointment_confirm').fadeOut(1000);
+      },
+      error : function() {
+          $('btn_new_appointment_submit').prop("disabled", true);
+          $('#new_appointment_error').fadeIn(1000);
+          $('#new_appointment_error').fadeOut(1000);
       }
   });
 }

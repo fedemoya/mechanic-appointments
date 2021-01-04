@@ -1,13 +1,13 @@
 package persistance
 
 import (
-    "strconv"
-    _ "github.com/mattn/go-sqlite3"
-    "github.com/jmoiron/sqlx"
     "database/sql"
+    "github.com/jmoiron/sqlx"
+    _ "github.com/mattn/go-sqlite3"
     "log"
-    "reflect"
     "mechanics-backend/config"
+    "reflect"
+    "strconv"
 )
 
 type Repository struct {
@@ -111,6 +111,21 @@ func (r *Repository) Retrieve (emptyObject interface{}, id int64) error {
     selectStr := "SELECT * FROM " + objectName + " WHERE Id = ?"
 
     err := r.DB.Get(emptyObject, selectStr, strconv.FormatInt(id, 10));
+
+    return err
+}
+
+func (r *Repository) Delete (object Entity) error {
+
+    t := reflect.TypeOf(object).Elem()
+
+    objectName := t.Name()
+
+    deleteStr := "DELETE FROM " + objectName + " WHERE Id = ?"
+
+    log.Printf("About to delete %s with id %d", objectName, object.GetId())
+
+    _, err := r.DB.Exec(deleteStr, strconv.FormatInt(object.GetId(), 10));
 
     return err
 }

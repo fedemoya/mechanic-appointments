@@ -59,6 +59,11 @@ function submitReparationForm() {
           $('#btn_new_reparation_submit').prop('disabled', true);
           $('#new_reparation_confirm').fadeIn(1000);
           $('#new_reparation_confirm').fadeOut(1000);
+      },
+      error : function() {
+          $('btn_new_reparation_submit').prop("disabled", true);
+          $('#new_reparation_error').fadeIn(1000);
+          $('#new_reparation_error').fadeOut(1000);
       }
   });
 }

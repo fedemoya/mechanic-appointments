@@ -21,6 +21,10 @@ function submitVehicleForm() {
       success : function(){
           $('#new_payment_confirm').fadeIn(1000);
           $('#new_payment_confirm').fadeOut(1000);
+      },
+      error : function() {
+          $('#new_payment_error').fadeIn(1000);
+          $('#new_payment_error').fadeOut(1000);
       }
   });
 }

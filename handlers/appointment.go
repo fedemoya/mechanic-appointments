@@ -191,3 +191,32 @@ func AppointmentList(w http.ResponseWriter, r *http.Request) {
 
     w.Write(appointmentsJson)
 }
+
+func DeleteAppointment(w http.ResponseWriter, r *http.Request) {
+    var vars map[string]string = mux.Vars(r)
+    id := vars["id"]
+
+    repository := persistance.NewRepository()
+
+    parsedId, err := strconv.ParseInt(id, 10, 64)
+    if err != nil {
+        log.Println(err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+
+    appointment := &models.Appointment{}
+    err = repository.Retrieve(appointment, parsedId)
+    if err != nil {
+        log.Println(err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+
+    err = repository.Delete(appointment)
+    if err != nil {
+        log.Println(err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+}

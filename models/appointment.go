@@ -10,16 +10,20 @@ type Appointment struct {
     Date int64
 }
 
+func (a *Appointment) GetId() int64 {
+    return a.Id
+}
+
 // TODO save the retrieved vehicle into a private field
-func (r *Appointment) Vehicle (repo *persistance.Repository) *Vehicle  {
+func (a *Appointment) Vehicle (repo *persistance.Repository) *Vehicle  {
     vehicle := &Vehicle{}
-    repo.Retrieve(vehicle, r.VehicleId)
+    repo.Retrieve(vehicle, a.VehicleId)
     return vehicle
 }
 
-func (r *Appointment) Client (repo *persistance.Repository) *Client  {
+func (a *Appointment) Client (repo *persistance.Repository) *Client  {
     vehicle := &Vehicle{}
-    repo.Retrieve(vehicle, r.VehicleId)
+    repo.Retrieve(vehicle, a.VehicleId)
     client := vehicle.Client(repo)
     return client
 }

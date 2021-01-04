@@ -13,6 +13,7 @@
 <script src=js/new_client.js></script>
 <script src=js/new_vehicle.js></script>
 <script src=js/new_appointment.js></script>
+<script src=js/delete_appointment.js></script>
 <script src=js/reparations.js></script>
 <script src=js/new_reparation.js></script>
 <script src=js/reparation_detail.js></script>
@@ -112,6 +113,9 @@
     <div id="new_client_confirm" align="center" style="display:none;background-color:grey;">
         <p><strong>Nuevo cliente creado</strong></p>
     </div>
+    <div id="new_client_error" align="center" style="display:none;background-color:grey;">
+      <p><strong>Error al crear cliente. Revise los datos ingresados.</strong></p>
+    </div>
 
     <a href="#new_vehicle" onclick="new_client_setNewVehicleData()" class="ui-btn ui-icon-plus ui-btn-icon-left" align="center" style="display:none" id="btn_load_vehicle">
       Cargar Vehiculo
@@ -150,6 +154,9 @@
 
       <div id="new_vehicle_confirm" align="center" style="display:none;background-color:grey;">
           <p><strong>Nuevo vehiculo creado</strong></p>
+      </div>
+      <div id="new_vehicle_error" align="center" style="display:none;background-color:grey;">
+          <p><strong>Error al crear vehiculo. Revise los datos ingresados.</strong></p>
       </div>
   
     <div data-role="footer" align="center">
@@ -191,9 +198,30 @@
 
   </div>
 
+    <div id="delete_appoinment_error" align="center" style="display:none;background-color:grey;">
+        <p><strong>Error al borrar turno.</strong></p>
+    </div>
+
   <div data-role="footer" align="center">
         <a href="#menu" class="ui-btn ui-icon-back ui-btn-icon-left">Volver</a>
   </div>
+</div>
+
+<div data-role="page" id="delete_appointment" data-dialog="true">
+
+    <div data-role="header">
+        <h1>Borrar turno</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div id="delete_appointment_message">
+        </div>
+    </div>
+
+    <div data-role="footer" align="center">
+        <a href="#appointments" class="ui-btn ui-btn-icon-left" data-rel="back" onclick="deleteAppointmentConfirmed()">Confirmar</button>
+        <a href="#appointments" class="ui-btn ui-btn-icon-left" data-rel="back">Cancelar</a>
+    </div>
 </div>
 
 
@@ -212,12 +240,15 @@
           Vehiculo<br>
           <input type="text" readonly id="new_appointment_vehicle"><br>
           Fecha<br>
-          <input type="text" data-role="date" id="new_appointment_date"><br>
+          <input type="datetime-local" id="new_appointment_date"><br>
           <input class="submit" type="submit" value="Enviar" id="btn_new_appointment_submit">
       </form>
 
       <div id="new_appointment_confirm" align="center" style="display:none;background-color:grey;">
           <p><strong>Nuevo turno creado</strong></p>
+      </div>
+      <div id="new_appointment_error" align="center" style="display:none;background-color:grey;">
+          <p><strong>Error al crear turno. Revise los datos ingresados.</strong></p>
       </div>
   
     <div data-role="footer" align="center">
@@ -297,6 +328,9 @@
 
     <div id="new_reparation_confirm" align="center" style="display:none;background-color:grey;">
       <p><strong>Nueva reparación creada</strong></p>
+    </div>
+    <div id="new_reparation_error" align="center" style="display:none;background-color:grey;">
+      <p><strong>Error al crear reparación. Revise los datos ingresados.</strong></p>
     </div>
   
     <div data-role="footer" align="center">

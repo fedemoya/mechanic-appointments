@@ -37,6 +37,7 @@ func main() {
     apiRouter.HandleFunc("/clients/debtors", handlers.DebtorList).Methods("GET")
 
     apiRouter.HandleFunc("/appointment", handlers.NewAppointment).Methods("POST")
+    apiRouter.HandleFunc("/appointment/{id:[0-9]+}", handlers.DeleteAppointment).Methods("DELETE")
     apiRouter.HandleFunc("/appointment/{id:[0-9]+}", handlers.AppointmentDetail).Methods("GET")
     apiRouter.HandleFunc("/appointments", handlers.AppointmentList).Methods("GET")
     apiRouter.HandleFunc("/appointments/{date:[0-9]+}", handlers.AppointmentList).Methods("GET")

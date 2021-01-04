@@ -18,6 +18,11 @@ function submitClientForm() {
           $('#new_client_confirm').fadeOut(1000, function () {
             $('#btn_load_vehicle').show();
           });
+      },
+      error : function() {
+          $('#btn_new_client_submit').prop("disabled", true);
+          $('#new_client_error').fadeIn(1000);
+          $('#new_client_error').fadeOut(1000);
       }
   });
 }

@@ -23,6 +23,11 @@ function submitVehicleForm() {
           $('#btn_new_vehicle_submit').prop("disabled", true);
           $('#new_vehicle_confirm').fadeIn(1000);
           $('#new_vehicle_confirm').fadeOut(1000);
+      },
+      error : function() {
+          $('btn_new_vehicle_submit').prop("disabled", true);
+          $('#new_vehicle_error').fadeIn(1000);
+          $('#new_vehicle_error').fadeOut(1000);
       }
   });
 }
